@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kernels and Feature Maps</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+
+</head>
+
+<body>
+    
+    <p>Feature Maps Introduction Page will go here</p>
+
+    <div class="container">
+        <div class="left">
+            <p>CNNs use kernels to detect different patterns in an image, and those patterns appear in feature maps.</p>
+            <p>A vertical edge detection kernel can recognize vertical lines, and a horizontal edge detection kernel can find horizontal lines in an image.</p>
+            <p>On the right, you can see the feature maps that were generated based off of the different kernels that were used with the image shown.</p>
+        </div>
+        <div class="right">    
+            <p>add some visualization</p>
+            
+                <canvas id="myCanvas"></canvas>
+            
+        </div>
+    </div>
+
+    <button onclick="redirectToFeatureMapIntro()">Next</button>
+
+    <script>
+        function redirectToFeatureMapIntro() {
+            window.location.href = "feature_map_intro.html";
+        }
+    </script>
+
+    <script src="static/js/example_visualization.js"></script>
+
+</body>

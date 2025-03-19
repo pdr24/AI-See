@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+
+</head>
+
+<body>
+
+    <p>Introduction page will go here</p>
+
+    <div class="container">
+        <div class="left">
+            <p>Let's see a quick demonstration of how CNNs work! </p>
+            <p>On the microbit device, draw a number in the air and then press the button on the left. See what number the microbit device thinks you drew. </p>
+            <p>On the right, you can see how the microbit device used feature maps and pooling to determine what you drew.</p>
+        </div>
+        <div class="right">    
+            <p>show visualization of feature maps and pooling layers here</p>
+        </div>
+    </div>
+
+    <button onclick="redirectToFeatureMapIntro()">Next</button>
+
+    <script>
+        function redirectToFeatureMapIntro() {
+            window.location.href = "feature_map_intro.html";
+        }
+    </script>
+
+</body>
