@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1 - Feature Map Make a Match</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+
+</head>
+
+<body>
+
+    <p>feature map make a match level goes here </p>
+
+    <div class="container">
+        <div class="left">
+            <p>Analyze this image and match each kernel to the feature map it will create.</p>
+            <img id="puzzleImage" src="static/assets/0_example/digit_0_original.png" alt="image of digit 0 from MNIST" width="80%" height="80%">
+            
+        </div>
+        <div class="right">    
+            
+            <div class="makeAMatchContainer" id="matchContainer">
+
+                <h3>Drag the feature maps into the correct kernel</h3>
+
+                <!-- Droppable Kernels -->
+                <div class="dropzone kernel" id="kernel1">Vertical Edge Detector</div>
+                <div class="dropzone kernel" id="kernel2">Horizontal Edge Detector</div>
+                <div class="dropzone kernel" id="kernel3">Upward Diagonal Edge Detector</div>
+                <div class="dropzone kernel" id="kernel4">Downward Diagonal Edge Detector</div>
+
+                <br>
+
+                <!-- Draggable Feature Maps -->
+                <img class="draggable feature" id="feature1" src="static/assets/0_example/digit_0_vertical_edges.png" alt="Vertical Feature Map" draggable="true">
+                <img class="draggable feature" id="feature2" src="static/assets/0_example/digit_0_horizontal_edges.png" alt="Horizontal Feature Map" draggable="true">
+                <img class="draggable feature" id="feature3" src="static/assets/0_example/digit_0_diagonal_1_edges.png" alt="Upward Diagonal Feature Map" draggable="true">
+                <img class="draggable feature" id="feature4" src="static/assets/0_example/digit_0_diagonal_2_edges.png" alt="Downward Diagonal Feature Map" draggable="true">
+                
+            </div>
+            
+        </div>
+    </div>
+
+    <button id="testAccuracyButton">Test Accuracy</button>
+
+    <script src="static/js/feature_map_match.js"></script>
+</body>

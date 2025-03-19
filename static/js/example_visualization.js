@@ -63,7 +63,7 @@ function draw() {
     });
 
     // Draw images
-    const scaleFactor = 2; // Adjust scale as needed
+    const scaleFactor = 3; // Adjust scale as needed
 
     nodes.forEach(node => {
         const img = new Image();
