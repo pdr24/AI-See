@@ -5,65 +5,83 @@ const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-// Image coordinates
+// Convert % to pixel values
+function percentToPixelX(percent) {
+    return percent * canvas.width;
+}
+
+function percentToPixelY(percent) {
+    return percent * canvas.height;
+}
+
+// Image coordinates (three-column layout)
 const nodes = [
-    { x: 150, y: 400, imgSrc: "static/assets/0_example/digit_0_original.png" },
-    { x: 600, y: 125, imgSrc: "static/assets/0_example/digit_0_vertical_edges.png" },
-    { x: 600, y: 325, imgSrc: "static/assets/0_example/digit_0_horizontal_edges.png" },
-    { x: 600, y: 525, imgSrc: "static/assets/0_example/digit_0_diagonal_1_edges.png" },
-    { x: 600, y: 725, imgSrc: "static/assets/0_example/digit_0_diagonal_2_edges.png" }
+    // original input image
+    { x: 0.15, y: 0.50, imgSrc: "static/assets/0_example/digit_0_original.png" }, 
+
+    // feature maps
+    { x: 0.85, y: 0.15, imgSrc: "static/assets/0_example/digit_0_vertical_edges.png" },
+    { x: 0.85, y: 0.38, imgSrc: "static/assets/0_example/digit_0_horizontal_edges.png" },
+    { x: 0.85, y: 0.61, imgSrc: "static/assets/0_example/digit_0_diagonal_1_edges.png" },
+    { x: 0.85, y: 0.84, imgSrc: "static/assets/0_example/digit_0_diagonal_2_edges.png" }
 ];
 
-// Rectangle nodes (text boxes)
+// Rectangle nodes (kernels, middle column)
 const rectNodes = [
-    { x: 300, y: 100, width: 200, height: 50, text: "Vertical Edge Kernel" },
-    { x: 300, y: 300, width: 200, height: 50, text: "Horizontal Edge Kernel" },
-    { x: 300, y: 500, width: 200, height: 50, text: "Upward Diagonal Kernel" },
-    { x: 300, y: 700, width: 200, height: 50, text: "Downward Diagonal Kernel" }
+    // kernels
+    { x: 0.50, y: 0.15, width: 350, height: 70, text: "Vertical Edge Kernel" },
+    { x: 0.50, y: 0.38, width: 350, height: 70, text: "Horizontal Edge Kernel" },
+    { x: 0.50, y: 0.61, width: 350, height: 70, text: "Upward Diagonal Kernel" },
+    { x: 0.50, y: 0.84, width: 350, height: 70, text: "Downward Diagonal Kernel" }
 ];
 
-// Connect rectangles to images
+// Connect original image → Kernels & Kernels → Feature maps (aligned)
 const rectConnections = [
-    { from: { x: 150, y: 400 }, to: { x: 300, y: 125 } }, 
-    { from: { x: 150, y: 400 }, to: { x: 300, y: 325 } },
-    { from: { x: 150, y: 400 }, to: { x: 300, y: 525 } },
-    { from: { x: 150, y: 400 }, to: { x: 300, y: 725 } },
-    
-    { from: { x: 300, y: 125 }, to: { x: 600, y: 125 } }, 
-    { from: { x: 300, y: 325 }, to: { x: 600, y: 325 } },
-    { from: { x: 300, y: 525 }, to: { x: 600, y: 525 } },
-    { from: { x: 300, y: 725 }, to: { x: 600, y: 725 } },
+    { from: { x: nodes[0].x + 0.03, y: nodes[0].y }, to: { x: rectNodes[0].x - 0.05, y: rectNodes[0].y } },
+    { from: { x: nodes[0].x + 0.03, y: nodes[0].y }, to: { x: rectNodes[1].x - 0.05, y: rectNodes[1].y } },
+    { from: { x: nodes[0].x + 0.03, y: nodes[0].y }, to: { x: rectNodes[2].x - 0.05, y: rectNodes[2].y } },
+    { from: { x: nodes[0].x + 0.03, y: nodes[0].y }, to: { x: rectNodes[3].x - 0.05, y: rectNodes[3].y } },
+
+    { from: { x: rectNodes[0].x + 0.05, y: rectNodes[0].y }, to: { x: nodes[1].x, y: nodes[1].y } },
+    { from: { x: rectNodes[1].x + 0.05, y: rectNodes[1].y }, to: { x: nodes[2].x, y: nodes[2].y } },
+    { from: { x: rectNodes[2].x + 0.05, y: rectNodes[2].y }, to: { x: nodes[3].x, y: nodes[3].y } },
+    { from: { x: rectNodes[3].x + 0.05, y: rectNodes[3].y }, to: { x: nodes[4].x, y: nodes[4].y } }
 ];
 
 function draw() {
     // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Draw connections between images and rectangles
+    // Draw connections (from original image -> kernels, kernels -> feature maps)
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 3;
     rectConnections.forEach(conn => {
         ctx.beginPath();
-        ctx.moveTo(conn.from.x, conn.from.y);
-        ctx.lineTo(conn.to.x, conn.to.y);
+        ctx.moveTo(percentToPixelX(conn.from.x), percentToPixelY(conn.from.y));
+        ctx.lineTo(percentToPixelX(conn.to.x), percentToPixelY(conn.to.y));
         ctx.stroke();
     });
 
-    // Draw rectangles with text
+    // Draw rectangles with text (centered)
     rectNodes.forEach(rect => {
+        let rectX = percentToPixelX(rect.x) - rect.width / 2;
+        let rectY = percentToPixelY(rect.y) - rect.height / 2;
+
         ctx.fillStyle = "lightblue"; // Rectangle color
-        ctx.fillRect(rect.x, rect.y, rect.width, rect.height);
+        ctx.fillRect(rectX, rectY, rect.width, rect.height);
 
         ctx.strokeStyle = "black"; // Border color
-        ctx.strokeRect(rect.x, rect.y, rect.width, rect.height);
+        ctx.strokeRect(rectX, rectY, rect.width, rect.height);
 
         ctx.fillStyle = "black"; // Text color
-        ctx.font = "16px Arial";
+        ctx.font = "24px Arial";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillText(rect.text, rect.x + rect.width / 2, rect.y + rect.height / 2);
+        ctx.fillText(rect.text, rectX + rect.width / 2, rectY + rect.height / 2);
     });
 
-    // Draw images
-    const scaleFactor = 3; // Adjust scale as needed
+    // Draw images (centered)
+    const scaleFactor = 6; 
 
     nodes.forEach(node => {
         const img = new Image();
@@ -71,9 +89,21 @@ function draw() {
         img.onload = () => {
             let newWidth = img.width * scaleFactor;
             let newHeight = img.height * scaleFactor;
-            ctx.drawImage(img, node.x - newWidth / 2, node.y - newHeight / 2, newWidth, newHeight);
+            ctx.drawImage(
+                img, 
+                percentToPixelX(node.x) - newWidth / 2, 
+                percentToPixelY(node.y) - newHeight / 2, 
+                newWidth, 
+                newHeight
+            );
         };
     });
 }
 
+// Ensure the canvas redraws when the window resizes
 window.onload = draw;
+window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    draw();
+});

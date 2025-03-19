@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
     const features = document.querySelectorAll(".feature"); // Draggable feature map images
-    const kernels = document.querySelectorAll(".kernel"); // Dropzones (kernels)
+    const kernels = document.querySelectorAll(".dropzone"); // Dropzones (kernels)
 
     // Store correct matches
     const correctMatches = {
-        "feature1": "kernel1",
-        "feature2": "kernel2",
-        "feature3": "kernel3",
-        "feature4": "kernel4"
+        "feature1": "drop1",
+        "feature2": "drop2",
+        "feature3": "drop3",
+        "feature4": "drop4"
     };
 
     let userMatches = {}; // Store user's answers

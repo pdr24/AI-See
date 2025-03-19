@@ -1,11 +1,26 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;  /* Ensure the width doesn't exceed the viewport */
+    height: 100vh; /* Ensure the body and html fill the viewport */
+    overflow: hidden; /* Prevent scrolling */
+    box-sizing: border-box;
+    align-items: center;
+}
+
+h2 {
+    text-align: center; /* Centers text horizontally */
+    width: 100%; /* Ensures it takes the full width */
+    margin: 1%;
+}
+
 .container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;  
-    height: 92vh;   
+    justify-content: space-around;
+    align-items: top;  
+    height: 75vh;   
     width: 100%;         
-    padding: 2vh;   
-     
+    padding: 2%;
 }
 
 .left {
@@ -13,7 +28,6 @@
     top: 10%;
     left: 10%;
     height: 80%;
-    margin-left: 2vh;
     padding: 2%;
     border: 5px solid black;
     border-radius: 5%;
@@ -23,49 +37,114 @@
     display: flex;
     width: 50%;
     height: 80%;
-    margin-right: 2vh;
     padding: 2%;
     border: 5px solid black;
     border-radius: 5%;
+    position: relative;
+}
+
+.containerMakeAMatch {
+    display: flex;
+    justify-content: space-around;
+    align-items: top;  
+    height: 70vh;   
+    width: 90%;      
+    margin-left: 3%;  
+    margin-right: 3%;   
+    padding: 2%;
+    border: 5px solid black;
+    border-radius: 5%;
+
+}
+
+.leftMakeAMatch {
+    width: 30%;
+    top: 10%;
+    left: 10%;
+    height: 90%;
+    padding: 2%;
+    border-radius: 5%;
+}
+
+.rightMakeAMatch {
+    display: flex;
+    width: 50%;
+    height:90%;
+    padding: 2%;
+    border-radius: 5%;
+    position: relative;
 }
 
 canvas {
-    position: relative;
+    position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
 
 }
 
 .makeAMatchContainer {
     position: relative;
-    background-color: beige;
+    background-color: transparent;
     height: 100%;
     width: 100%;
     border-radius: 5%;
 }
 
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-template-rows: repeat(2, auto); /* 2 rows */
+    gap: 10px; /* Space between images */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+}
+
 .feature {
-    width: 150px;
-    height: 150px;
-    margin: 10px;
+    width: 100px; /* Adjust as needed */
+    height: 120px;
     border: 2px solid black;
     cursor: grab;
 }
 
-/* Styling for kernel dropzones */
-.kernel {
-    width: 250px;
-    height: 50px;
-    padding: 10px;
-    margin: 10px;
-    background-color: lightblue;
+.dropzone {
+    position: absolute;
+    width: 100px; 
+    height: 115px;
     border: 3px dashed black;
-    border-radius: 5px;
-    text-align: center;
-    font-weight: bold;
+    background: rgba(255, 255, 255, 1.0); /* Transparent overlay */
+    z-index: 10; /* Ensures it is above the canvas */
+    transform: translate(-50%, -50%);
 }
 
-/* highlight when dragging over a valid drop target */
-.kernel.dragover {
+.dropzone.dragover {
     background-color: lightgreen;
+}
+
+/* Position each drop zone over the feature maps */
+#drop1 { top: 11%; left: 88%; }
+#drop2 { top: 37%; left: 88%; }
+#drop3 { top: 63%; left: 88%; }
+#drop4 { top: 89%; left: 88%; }
+
+.nextButton {
+    display: block; /* Makes it a block-level element to allow centering */
+    width: fit-content; /* Makes the button as wide as its content */
+    margin: 20px auto; /* Centers it horizontally */
+    padding: 10px 20px;
+    font-size: 16px;
+    color: black;
+    border: 1px solid black; 
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    bottom: 1vh;
+}
+
+.nextButton:hover {
+    opacity: 0.95;
 }
