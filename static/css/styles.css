@@ -131,9 +131,9 @@ canvas {
 #drop4 { top: 89%; left: 88%; }
 
 .nextButton {
-    display: block; /* Makes it a block-level element to allow centering */
-    width: fit-content; /* Makes the button as wide as its content */
-    margin: 20px auto; /* Centers it horizontally */
+    display: block; 
+    width: fit-content; 
+    margin: 20px auto; 
     padding: 10px 20px;
     font-size: 16px;
     color: black;
