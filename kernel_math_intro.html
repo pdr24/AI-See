@@ -14,18 +14,24 @@
     <h2>Kernel Math Introduction Page will go here</h2>
 
     <div class="container">
-        <div class="left">
+        <div class="left50">
             <p>TODO: Add brief text intro here</p>
             
         </div>
-        <div class="right">    
+        <div class="right50">    
             
             <canvas id="myCanvas"></canvas>
             
         </div>
     </div>
+    
+    <div class="buttonRow">
+        <button class="prevStageButton" onclick="prevStage()">Previous Step</button>
+        <button class="nextStageButton" onclick="nextStage()">Next Step</button>
+    </div>
+    
 
-    <button onclick="redirectToKernelMathLevel()">Next</button>
+    <button class="nextButton" onclick="redirectToKernelMathLevel()">Next</button>
 
     <script>
         function redirectToKernelMathLevel() {
@@ -33,6 +39,6 @@
         }
     </script>
 
-    <script src="static/js/example_visualization.js"></script>
+    <script src="static/js/kernel_math_intro_visualization.js"></script>
 
 </body>
