@@ -4,7 +4,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1 - Feature Map Make a Match</title>
+    <title>Feature Map Make-A-Match</title>
     <link rel="stylesheet" href="static/css/styles.css">
 
 </head>
@@ -42,6 +42,14 @@
     </div>
 
     <button class="nextButton" id="testAccuracyButton">Test Accuracy</button>
+
+    <button class="nextButton" onclick="redirectToKernelMathIntro()">Next</button>
+
+    <script>
+        function redirectToKernelMathIntro() {
+            window.location.href = "kernel_math_intro.html";
+        }
+    </script>
 
     <script src="static/js/example_visualization.js"></script>
     <script src="static/js/feature_map_match.js"></script>
