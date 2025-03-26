@@ -1,0 +1,47 @@
+[
+    { "stage": 1, "text": "The computer will represent the input image using numbers. Here, the black and white 2 is shown using 0s and 1s. The kernel is something the computer will use to find patterns in the input image." },
+
+    { "stage": 2, "text": "The computer will apply the kernel on the input image and create a feature map. The feature map will have information on the pattern the computer found in the input image using the kernel. " },
+
+    { "stage": 3, "text": "To create the feature map, we have to slide the kernel over the input image like this. " },
+
+    { "stage": 4, "text": "To create the feature map, we have to slide the kernel over the input image like this. " },
+
+    { "stage": 5, "text": "To create the feature map, we have to slide the kernel over the input image like this. " },
+
+    { "stage": 6, "text": "To create the feature map, we have to slide the kernel over the input image like this. " },
+
+    { "stage": 7, "text": "To create the feature map, we have to slide the kernel over the input image like this. " },
+
+    { "stage": 8, "text": "To create the feature map, we have to slide the kernel over the input image like this. " },
+
+    { "stage": 9, "text": "To create the feature map, we have to slide the kernel over the input image like this. " },
+
+    { "stage": 10, "text": "To create the feature map, we have to slide the kernel over the input image like this. " },
+
+    { "stage": 11, "text": "To create the feature map, we have to slide the kernel over the input image like this. " },
+
+    { "stage": 12, "text": "At each stage, the computer does some math with the input image and the kernel to fill out one box in the feature map. The kernel is on top of a 3x3 portion of the input image. We have to multiply each box in the highlighted portion of the input image with the corresponding box in the kernel. Then, we have to add all of those products together. <br><br>For example: <br><br>(0 x 1) + (1 x 0) + (1 x -1) + <br>(0 x 1) + (0 x 0) + (0 x -1) +       =       -2 <br>(0 x 1) + (1 x 0) + (1 x -1) <br>" },
+
+    { "stage": 13, "text": "Finally, we can enter the result (-2) into the corresponding box in the feature map. " },
+
+    { "stage": 14, "text": "Now, we slide the kernel and repeat the math to find the value to put into the next box of the feature map: <br><br>(1 x 1) + (1 x 0) + (1 x -1) + <br>(0 x 1) + (0 x 0) + (1 x -1) +       =       -1 <br>(1 x 1) + (1 x 0) + (1 x -1) <br>" },
+
+    { "stage": 15, "text": "We repeat this each time we slide the kernel: <br><br>(1 x 1) + (1 x 0) + (0 x -1) + <br>(0 x 1) + (1 x 0) + (0 x -1) +       =       2 <br>(1 x 1) + (1 x 0) + (0 x -1) <br>" },
+
+    { "stage": 16, "text": "We repeat this each time we slide the kernel: <br><br>(0 x 1) + (0 x 0) + (0 x -1) + <br>(0 x 1) + (1 x 0) + (1 x -1) +       =       -1 <br>(0 x 1) + (1 x 0) + (0 x -1) <br>" },
+
+    { "stage": 17, "text": "We repeat this each time we slide the kernel: <br><br>(0 x 1) + (0 x 0) + (1 x -1) + <br>(1 x 1) + (1 x 0) + (1 x -1) +       =       0 <br>(1 x 1) + (0 x 0) + (0 x -1) <br>" },
+
+    { "stage": 18, "text": "We repeat this each time we slide the kernel: <br><br>(0 x 1) + (1 x 0) + (0 x -1) + <br>(1 x 1) + (1 x 0) + (0 x -1) +       =       1 <br>(0 x 1) + (0 x 0) + (0 x -1) <br>" },
+
+    { "stage": 19, "text": "We repeat this each time we slide the kernel: <br><br>(0 x 1) + (1 x 0) + (1 x -1) + <br>(0 x 1) + (1 x 0) + (0 x -1) +       =       -2 <br>(0 x 1) + (1 x 0) + (1 x -1) <br>" },
+
+    { "stage": 20, "text": "We repeat this each time we slide the kernel: <br><br>(1 x 1) + (1 x 0) + (1 x -1) + <br>(1 x 1) + (0 x 0) + (0 x -1) +       =       1 <br>(1 x 1) + (1 x 0) + (1 x -1) <br>" },
+
+    { "stage": 21, "text": "We repeat this each time we slide the kernel: <br><br>(1 x 1) + (1 x 0) + (0 x -1) + <br>(0 x 1) + (0 x 0) + (0 x -1) +       =       2 <br>(1 x 1) + (1 x 0) + (0 x -1) <br>" },
+
+    { "stage": 22, "text": "So that’s how kernel math works! The computer can then use this feature map to understand certain patterns in the input image. " }
+
+]
+  
