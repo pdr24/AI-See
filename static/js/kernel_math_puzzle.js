@@ -54,4 +54,30 @@ function matrixToHTML(matrix) {
         `</table>`;
 }
 
+function testAccuracy() {
+    // TODO: prompt user to complete the puzzle if any input fields are blank 
+
+    const correctMap = currentPuzzle.feature_map;
+    let total = 9;
+    let correct = 0;
+
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            const inputId = `cell-${i}-${j}`;
+            const inputElement = document.getElementById(inputId);
+            if (!inputElement) continue;
+
+            const userValue = parseInt(inputElement.value);
+            const correctValue = correctMap[i][j];
+
+            if (!isNaN(userValue) && (userValue === correctValue)) {
+                correct++;
+            }
+        }
+    }
+
+    const accuracy = Math.round((correct / total) * 100);
+    alert(`You got ${correct} out of ${total} correct. Accuracy: ${accuracy}%`);
+}
+
 
