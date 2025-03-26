@@ -214,3 +214,21 @@ Kernel Math
     padding: 5px 10px;
     text-align: center;
 }
+
+.input-matrix {
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .input-matrix td {
+    border: 1px solid #555;
+    padding: 4px;
+  }
+  
+  .feature-map-input {
+    width: 50px;
+    padding: 4px;
+    text-align: center;
+    font-size: 16px;
+  }
+  
