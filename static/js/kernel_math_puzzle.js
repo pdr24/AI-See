@@ -1,5 +1,5 @@
-let puzzles = [];
-let currentPuzzle = null;
+let puzzles = []; // for storing all the puzzles
+let currentPuzzle = null; // stores the current puzzle that has been selected
 
 // load and display a puzzle when the html page loads
 document.addEventListener("DOMContentLoaded", function () {
@@ -57,10 +57,12 @@ function matrixToHTML(matrix) {
 function testAccuracy() {
     // TODO: prompt user to complete the puzzle if any input fields are blank 
 
+    // calculate user's accuracy 
     const correctMap = currentPuzzle.feature_map;
-    let total = 9;
+    let total = 9; // number of input boxes user must fill out is hard coded at 9 for now 
     let correct = 0;
 
+    // count number of correct entries 
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
             const inputId = `cell-${i}-${j}`;
@@ -76,8 +78,10 @@ function testAccuracy() {
         }
     }
 
-    const accuracy = Math.round((correct / total) * 100);
-    alert(`You got ${correct} out of ${total} correct. Accuracy: ${accuracy}%`);
+    const accuracy = Math.round((correct / total) * 100); // calculate accuracy 
+    alert(`You got ${correct} out of ${total} correct. Accuracy: ${accuracy}%`); // temporary accuracy display method 
 }
 
-
+function displayAccuracy() {
+    // TODO: display user's accuracy 
+}
