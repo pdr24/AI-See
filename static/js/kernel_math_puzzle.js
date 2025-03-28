@@ -85,3 +85,7 @@ function testAccuracy() {
 function displayAccuracy() {
     // TODO: display user's accuracy 
 }
+
+function displayNextButton() {
+    // TODO: display the next button for the user to move to the next level 
+}
