@@ -40,7 +40,7 @@ function displayPuzzle() {
     puzzleTextElement.innerHTML = `
         <p>${puzzleInstructions}</p>
         <strong>Input Image:</strong><br>${inputImageHTML}<br>
-        <strong>Kernel:</strong><br>${featureMapHTML}<br>
+        <strong>Feature Map:</strong><br>${featureMapHTML}<br>
     `;
 }
 
