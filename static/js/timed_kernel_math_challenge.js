@@ -44,6 +44,8 @@ function runChallengeLevel() {
 
         if (secondsLeft <= 0) {
             clearInterval(timerInterval); // Stop the timer when time is up
+
+            showTimeUpModal(); // show final accuracy and next/play again buttons 
         }
     }, 1000); // Update timer every second
 
@@ -223,4 +225,13 @@ function testAccuracy() {
     testSingleCellAccuracy(i2, j2);
 
     alert(`You got ${numCorrectAnswers} out of ${numAnswers} correct.`); // temporary accuracy display method 
+}
+
+function showTimeUpModal() {
+    // calculate and display accuracy 
+    let accuracy = numCorrectAnswers / (1.0 * numAnswers) * 100;
+    // TODO: add better way to display the accuracy 
+    alert(`You got ${numCorrectAnswers} out of ${numAnswers} correct.Accuracy = ${accuracy}%`); // temporary accuracy display method 
+
+    // TODO: show next level and play again buttons 
 }
