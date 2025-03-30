@@ -76,6 +76,10 @@ function testAccuracy() {
     return accuracy;
 }
 
+function displayAccuracy() {
+    // TODO
+}
+
 function applyKernel(kernel, inputImage) {
     const output = [];
 
