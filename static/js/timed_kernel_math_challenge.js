@@ -202,13 +202,20 @@ function testSingleCellAccuracy(i, j) {
     let userAnswer = parseInt(input.value); 
 
     const featureMap = applyKernel(currentPuzzle.kernel, currentPuzzle.input_image);
-    
+
     // update vars based on correctness 
     numAnswers = numAnswers + 1;
     if (userAnswer === featureMap[i][j]) {
         numCorrectAnswers = numCorrectAnswers + 1;
     }        
 
+}
+
+function showNextPuzzle() {
+    testAccuracy();
+
+    chooseRandomPuzzle();
+    displayPuzzle();
 }
 
 function testAccuracy() {
