@@ -2,6 +2,11 @@ const challengeLevelLength = 30; // 30 for now
 let puzzles = []; // for storing all the puzzles
 let currentPuzzle = null; // stores the current puzzle that has been selected
 
+// for data collection 
+let numCorrectAnswers = 0;
+let numAnswers = 0;
+let numPuzzlesCompleted = 0;
+
 // indices of positions the students will be answering 
 let i1 = null;
 let j1 = null;
@@ -188,4 +193,27 @@ function updateTimerDisplay(seconds) {
     if (timerElement) {
         timerElement.innerText = seconds + 's';
     }
+}
+
+function testSingleCellAccuracy(i, j) {
+    // get the user's input 
+    let cellId = `cell-${i}-${j}`;
+    let input = document.getElementById(cellId);
+    let userAnswer = parseInt(input.value); 
+
+    const featureMap = applyKernel(currentPuzzle.kernel, currentPuzzle.input_image);
+    
+    // update vars based on correctness 
+    numAnswers = numAnswers + 1;
+    if (userAnswer === featureMap[i][j]) {
+        numCorrectAnswers = numCorrectAnswers + 1;
+    }        
+
+}
+
+function testAccuracy() {
+    testSingleCellAccuracy(i1, j1);
+    testSingleCellAccuracy(i2, j2);
+
+    alert(`You got ${numCorrectAnswers} out of ${numAnswers} correct.`); // temporary accuracy display method 
 }
