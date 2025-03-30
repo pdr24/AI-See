@@ -1,7 +1,7 @@
 [
     {
       "id": 1,
-      "instructions": "Try creating a kernel that can detect vertical edges! Use just 0s and 1s in your kernel.",
+      "instructions": "Try creating a kernel that can detect vertical edges! Use only 0s and 1s in your kernel.",
       "answer_kernel": [
         [0, 1, 0],
         [0, 1, 0],
