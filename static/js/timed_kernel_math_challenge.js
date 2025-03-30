@@ -71,7 +71,7 @@ function displayPuzzle() {
     const kernelHTML = matrixToHTML(currentPuzzle.kernel);
 
     puzzleTextElement.innerHTML = `
-        <p>Calculate the feature map the computer would get when applying this kernel on this input image.</p>
+        <p>Complete the feature map shown to the right, where the kernel below is applied on the input image below.</p>
         <strong>Input Image:</strong><br>${inputImageHTML}<br>
         <strong>Kernel:</strong><br>${kernelHTML}<br>
         
