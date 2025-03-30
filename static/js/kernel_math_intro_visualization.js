@@ -4,7 +4,7 @@ let stageData = [];
 
 // display stage 0 upon loading the html page 
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("static/kernel_math_visualization_stages_text.json")
+    fetch("static/1_kernel_math_visualization_text.json")
         .then(response => response.json())
         .then(data => {
             stageData = data; // load json with text info for each stage
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function showStage() {
     // determine correct image path for current stage 
     let image_curr_stage = currStage + ".png";
-    let path_image_curr_stage = "static/assets/kernel_math_visualization_stages/" + image_curr_stage;
+    let path_image_curr_stage = "static/assets/1_vertical_visualization/" + image_curr_stage;
 
     console.log("trying to load: ", path_image_curr_stage); // testing purposes 
 

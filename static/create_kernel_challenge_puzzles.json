@@ -13,11 +13,38 @@
         [0, 1, 1, 1, 0],
         [0, 0, 0, 1, 0],
         [0, 0, 0, 1, 0]
+      ]
+    },
+    {
+      "id": 2,
+      "instructions": "Try creating a kernel that can detect horizontal edges!<br><br>Hint: use only 0s and 1s in your kernel!<br><br>For example, your answer kernel might create the feature map shown below when applied on the input image shown here:",
+      "answer_kernel": [
+        [1, 1, 1],
+        [0, 0, 0],
+        [1, 1, 1]
       ],
-      "answer_feature_map": [
-        [3, 2, 3],
-        [2, 1, 3],
-        [1, 1, 3]
+      "input_image": [
+        [0, 1, 1, 1, 0],
+        [0, 0, 0, 1, 0],
+        [0, 1, 1, 1, 0],
+        [0, 1, 0, 0, 0],
+        [0, 1, 1, 1, 0]
+      ]
+    },
+    {
+      "id": 3,
+      "instructions": "Try creating a kernel that can detect vertical edges!<br><br>Hint: use only 0s and 1s in your kernel!<br><br>For example, your answer kernel might create the feature map shown below when applied on the input image shown here:",
+      "answer_kernel": [
+        [1, 0, 1],
+        [1, 0, 1],
+        [1, 0, 1]
+      ],
+      "input_image": [
+        [0, 0, 1, 0, 0],
+        [0, 1, 1, 0, 0],
+        [0, 0, 1, 0, 0],
+        [0, 0, 1, 0, 0],
+        [0, 1, 1, 1, 0]
       ]
     }
   ]

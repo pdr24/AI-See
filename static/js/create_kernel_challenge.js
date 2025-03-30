@@ -34,7 +34,7 @@ function displayPuzzle() {
     }
 
     const inputImageHTML = matrixToHTML(currentPuzzle.input_image);
-    const featureMapHTML = matrixToHTML(currentPuzzle.answer_feature_map);
+    const featureMapHTML = matrixToHTML(applyKernel(currentPuzzle.answer_kernel, currentPuzzle.input_image));
     const puzzleInstructions = currentPuzzle.instructions;
 
     puzzleTextElement.innerHTML = `
@@ -56,7 +56,7 @@ function matrixToHTML(matrix) {
 function testAccuracy() {
     // determine output map user's kernel would create on the input image 
     let inputImage = currentPuzzle.input_image;
-    let correctFeatureMap = currentPuzzle.answer_feature_map;
+    let correctFeatureMap = applyKernel(currentPuzzle.answer_kernel, inputImage);
     let userKernel = readUserInputKernel();
     let userOutputFeatureMap = applyKernel(userKernel, inputImage);
 
