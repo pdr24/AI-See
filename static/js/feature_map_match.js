@@ -62,6 +62,21 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
 
-        alert(`Accuracy: ${correctCount} / ${totalMatches} correct matches!`);
+        let accuracy = 1.0 * correctCount / totalMatches * 100;
+
+        // show accuracy div 
+        let leftContainer = document.getElementById("leftContainer");
+        leftContainer.innerHTML = `
+            <div class="accuracy-display-container">    
+                <p class="accuracy-display-text">Accuracy: ${accuracy}% <br><br>${correctCount} / ${totalMatches} correct matches!</p>
+                
+                <button class="nextButton" onclick="redirectToNextLevel()">Next</button>
+            </div>
+        `;
+
+        // remove test accuracy button 
+        let testAccuracyButton = document.getElementById("testAccuracyButton");
+        testAccuracyButton.style.visibility = "hidden";
+
     });
 });

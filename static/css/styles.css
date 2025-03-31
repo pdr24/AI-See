@@ -108,6 +108,21 @@ p {
     border-radius: 15%;
 }
 
+.accuracy-display-text {
+    font-size: 200%;
+    margin-bottom: 15%;
+    text-align: center;
+}
+
+.accuracy-display-container {
+    background-color: #99c3e3;
+    border-radius: 10%;
+    padding: 10%;
+    margin-top: 3%;
+    margin: auto;
+    height: 70%;
+}
+
 
 /* ---------------------------------------------------------------------------------------------------------
 Feature Map Make-A-Match 

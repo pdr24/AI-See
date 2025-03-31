@@ -87,7 +87,20 @@ function testAccuracy() {
     }
 
     const accuracy = Math.round((correct / total) * 100); // calculate accuracy 
-    alert(`You got ${correct} out of ${total} correct. Accuracy: ${accuracy}%`); // temporary accuracy display method 
+
+    // show accuracy div 
+    let leftContainer = document.getElementById("leftContainer");
+    leftContainer.innerHTML = `
+        <div class="accuracy-display-container">    
+            <p class="accuracy-display-text">Accuracy: ${accuracy}%</p>
+            
+            <button class="nextButton" onclick="redirectToNextLevel()">Next</button>
+        </div>
+    `;
+
+    // remove test accuracy button 
+    let testAccuracyButton = document.getElementById("testAccuracyButton");
+    testAccuracyButton.style.visibility = "hidden";
 }
 
 function displayAccuracy() {
