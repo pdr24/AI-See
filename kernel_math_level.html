@@ -9,7 +9,7 @@
 
 </head>
 
-<body>
+<body data-page-id="kernel_math_level">
 
     <h2>Kernel Math Practice </h2>
 
@@ -46,14 +46,9 @@
 
     <button class="nextButton" id="testAccuracyButton" onclick="testAccuracy()">Submit</button>
 
-    <button class="nextButton" id="next" onclick="redirectToCreateKernelChallengeLevel()">Next Level</button>
-
-    <script>
-        function redirectToCreateKernelChallengeLevel() {
-            window.location.href = "create_kernel_challenge.html";
-        }
-    </script>
+    <button class="nextButton" id="next" onclick="redirectToNextLevel()">Next Level</button>
 
     <script src="static/js/kernel_math_puzzle.js"></script>
+    <script src="static/js/redirect.js"></script>
 
 </body>
