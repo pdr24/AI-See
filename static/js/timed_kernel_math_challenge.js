@@ -72,8 +72,17 @@ function displayPuzzle() {
 
     puzzleTextElement.innerHTML = `
         <p>Complete the feature map shown to the right, where the kernel below is applied on the input image below.</p>
-        <strong>Input Image:</strong><br>${inputImageHTML}<br>
-        <strong>Kernel:</strong><br>${kernelHTML}<br>
+        
+        <div style="display: flex; gap: 15%; align-items: flex-start; margin: 5%">
+            <div>
+                <strong>Input Image:</strong><br>
+                ${inputImageHTML}
+            </div>
+            <div>
+                <strong>Kernel:</strong><br>
+                ${kernelHTML}
+            </div>
+        </div>
         
     `;
 

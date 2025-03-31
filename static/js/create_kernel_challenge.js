@@ -38,9 +38,19 @@ function displayPuzzle() {
     const puzzleInstructions = currentPuzzle.instructions;
 
     puzzleTextElement.innerHTML = `
-        <p>${puzzleInstructions}</p>
-        <strong>Input Image:</strong><br>${inputImageHTML}<br>
-        <strong>Feature Map:</strong><br>${featureMapHTML}<br>
+        <div>    
+            <p style="font-size: 80%">${puzzleInstructions}</p>
+            <div style="display: flex; gap: 15%; align-items: flex-start; margin: 5%">
+                <div>
+                    <strong>Input Image:</strong><br>
+                    ${inputImageHTML}
+                </div>
+                <div>
+                    <strong>Feature Map:</strong><br>
+                    ${featureMapHTML}
+                </div>
+            </div>
+        </div>
     `;
 }
 

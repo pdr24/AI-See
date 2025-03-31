@@ -38,11 +38,19 @@ function displayPuzzle() {
     const kernelHTML = matrixToHTML(currentPuzzle.kernel);
 
     puzzleTextElement.innerHTML = `
-        <p>Calculate the feature map the computer would get when applying this kernel on this input image.</p>
-        <strong>Input Image:</strong><br>${inputImageHTML}<br>
-        <strong>Kernel:</strong><br>${kernelHTML}<br>
-        
-    `;
+    <p>Calculate the feature map the computer would get when applying this kernel on this input image:</p>
+    <div style="display: flex; gap: 15%; align-items: flex-start; margin: 5%">
+        <div>
+            <strong>Input Image:</strong><br>
+            ${inputImageHTML}
+        </div>
+        <div>
+            <strong>Kernel:</strong><br>
+            ${kernelHTML}
+        </div>
+    </div>
+`;
+
 }
 
 // helper function for displaying matrices nicely 
