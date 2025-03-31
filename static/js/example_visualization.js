@@ -17,13 +17,13 @@ function percentToPixelY(percent) {
 // Image coordinates (three-column layout)
 const nodes = [
     // original input image
-    { x: 0.15, y: 0.50, imgSrc: "static/assets/0_example/digit_0_original.png" }, 
+    { x: 0.15, y: 0.50, imgSrc: "static/assets/matchPuzzles/0_enhanced/original.png" }, 
 
     // feature maps
-    { x: 0.85, y: 0.15, imgSrc: "static/assets/0_example/digit_0_vertical_edges.png" },
-    { x: 0.85, y: 0.38, imgSrc: "static/assets/0_example/digit_0_horizontal_edges.png" },
-    { x: 0.85, y: 0.61, imgSrc: "static/assets/0_example/digit_0_diagonal_1_edges.png" },
-    { x: 0.85, y: 0.84, imgSrc: "static/assets/0_example/digit_0_diagonal_2_edges.png" }
+    { x: 0.85, y: 0.15, imgSrc: "static/assets/matchPuzzles/0_enhanced/vertical.png" },
+    { x: 0.85, y: 0.38, imgSrc: "static/assets/matchPuzzles/0_enhanced/horizontal.png" },
+    { x: 0.85, y: 0.61, imgSrc: "static/assets/matchPuzzles/0_enhanced/upward.png" },
+    { x: 0.85, y: 0.84, imgSrc: "static/assets/matchPuzzles/0_enhanced/downward.png" }
 ];
 
 // Rectangle nodes (kernels, middle column)
@@ -81,7 +81,7 @@ function draw() {
     });
 
     // Draw images (centered)
-    const scaleFactor = 6; 
+    const scaleFactor = 0.7; 
 
     nodes.forEach(node => {
         const img = new Image();
