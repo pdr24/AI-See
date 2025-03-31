@@ -34,7 +34,7 @@ function displayPuzzle() {
         return;
     }
 
-    const inputImageHTML = matrixToHTML(currentPuzzle.inputImage);
+    const inputImageHTML = matrixToHTML(currentPuzzle.input_image);
     const kernelHTML = matrixToHTML(currentPuzzle.kernel);
 
     puzzleTextElement.innerHTML = `
@@ -66,7 +66,7 @@ function testAccuracy() {
     // TODO: prompt user to complete the puzzle if any input fields are blank 
 
     // calculate user's accuracy 
-    const correctMap = currentPuzzle.feature_map;
+    const correctMap = applyKernel(currentPuzzle.kernel, currentPuzzle.input_image);
     let total = 9; // number of input boxes user must fill out is hard coded at 9 for now 
     let correct = 0;
 
@@ -104,4 +104,27 @@ function testAccuracy() {
     // remove test accuracy button 
     let testAccuracyButton = document.getElementById("testAccuracyButton");
     testAccuracyButton.style.visibility = "hidden";
+}
+
+function applyKernel(kernel, inputImage) {
+    const output = [];
+
+    for (let i = 0; i < 3; i++) { // output is always 3x3
+        const row = [];
+        for (let j = 0; j < 3; j++) {
+            let sum = 0;
+            for (let ki = 0; ki < 3; ki++) {
+                for (let kj = 0; kj < 3; kj++) {
+                    const inputVal = inputImage[i + ki][j + kj];
+                    const kernelVal = kernel[ki][kj];
+                    sum += inputVal * kernelVal;
+                }
+            }
+            row.push(sum);
+        }
+        output.push(row);
+    }
+
+    console.table(output); // debugging purposes 
+    return output;
 }
