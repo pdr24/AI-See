@@ -22,16 +22,13 @@ function showStage() {
 
     // display corresponding image 
     drawImageOnCanvas(path_image_curr_stage);
-
-    // TODO: show text for current stage 
-
 }
 
 function drawImageOnCanvas(imageSrc) {
     const canvas = document.getElementById("myCanvas");
     const ctx = canvas.getContext("2d");
 
-    // Resize canvas to match its container
+    // Resize canvas to match container
     canvas.width = canvas.parentElement.clientWidth;
     canvas.height = canvas.parentElement.clientHeight;
 
@@ -39,22 +36,45 @@ function drawImageOnCanvas(imageSrc) {
     img.src = imageSrc;
 
     img.onload = function () {
-        // Draw image centered on the canvas
-        const x = (canvas.width - img.width) / 2;
-        const y = (canvas.height - img.height) / 2;
+        const cropMargin = 5; // Crop 1px from each side
+        const cropX = cropMargin;
+        const cropY = cropMargin;
+        const cropWidth = img.width - cropMargin * 2;
+        const cropHeight = img.height - cropMargin * 2;
+    
+        // Target size and position (95% of canvas, centered)
+        const scaleFactor = 0.94;
+        const targetWidth = canvas.width * scaleFactor;
+        const targetHeight = canvas.height * scaleFactor;
+        const x = (canvas.width - targetWidth) / 2;
+        const y = (canvas.height - targetHeight) / 2;
+    
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(img, x, y);
+        ctx.drawImage(
+            img,
+            cropX, cropY, cropWidth, cropHeight,
+            x, y, targetWidth, targetHeight
+        );
     };
 
-    // Get the text from the loaded JSON
+    // Update left pane text
     const stage = stageData.find(item => item.stage === currStage);
     const leftPane = document.querySelector(".left50");
+    leftPane.innerHTML = stage
+        ? `<p>${stage.text}</p>`
+        : `<p>No explanation found for this stage.</p>`;
+}
 
-    if (stage) {
-        leftPane.innerHTML = `<p>${stage.text}</p>`;
-    } else {
-        leftPane.innerHTML = `<p>No explanation found for this stage.</p>`;
-    }
+function roundedRect(ctx, x, y, width, height, radius) {
+    ctx.moveTo(x + radius, y);
+    ctx.lineTo(x + width - radius, y);
+    ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+    ctx.lineTo(x + width, y + height - radius);
+    ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+    ctx.lineTo(x + radius, y + height);
+    ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+    ctx.lineTo(x, y + radius);
+    ctx.quadraticCurveTo(x, y, x + radius, y);
 }
 
 
