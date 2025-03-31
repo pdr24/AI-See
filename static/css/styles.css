@@ -89,6 +89,7 @@ p {
     background-color: white;
 }
 
+.playAgainButton,
 .nextButton {
     display: block; 
     width: fit-content; 

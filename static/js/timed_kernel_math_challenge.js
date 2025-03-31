@@ -232,8 +232,6 @@ function showNextPuzzle() {
 function testAccuracy() {
     testSingleCellAccuracy(i1, j1);
     testSingleCellAccuracy(i2, j2);
-
-    alert(`You got ${numCorrectAnswers} out of ${numAnswers} correct.`); // temporary accuracy display method 
 }
 
 function showTimeUpModal() {
@@ -246,7 +244,10 @@ function showTimeUpModal() {
         <div class="accuracy-display-container" style="height: auto;">    
             <p class="accuracy-display-text">Accuracy: ${accuracy}%</p>
             
-            <button class="nextButton" onclick="redirectToNextLevel()">Next</button>
+            <div class="buttonRow">
+                <button class="playAgainButton" onclick="playAgain()">Play Again</button>
+                <button class="nextButton" onclick="redirectToNextLevel()">Next</button>
+            </div>
         </div>
     `;
 

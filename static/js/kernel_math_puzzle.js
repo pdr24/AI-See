@@ -94,7 +94,10 @@ function testAccuracy() {
         <div class="accuracy-display-container">    
             <p class="accuracy-display-text">Accuracy: ${accuracy}%</p>
             
-            <button class="nextButton" onclick="redirectToNextLevel()">Next</button>
+            <div class="buttonRow">
+                <button class="playAgainButton" onclick="playAgain()">Play Again</button>
+                <button class="nextButton" onclick="redirectToNextLevel()">Next</button>
+            </div>
         </div>
     `;
 

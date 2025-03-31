@@ -81,8 +81,24 @@ function testAccuracy() {
     }
 
     let accuracy = (correctCellCount / 9.0) * 100;
-    console.log("User accuacy: ", accuracy);
-    alert(`Accuracy: ${accuracy}%`); // temporary accuracy display method 
+
+    // show accuracy div 
+    let container = document.getElementById("leftContainer");
+    container.innerHTML = `
+        <div class="accuracy-display-container" style="height: auto; padding: 20%;">    
+            <p class="accuracy-display-text">Accuracy: ${accuracy}%</p>
+            
+            <div class="buttonRow">
+                <button class="playAgainButton" onclick="playAgain()">Play Again</button>
+                <button class="nextButton" onclick="redirectToNextLevel()">Next</button>
+            </div>
+        </div>
+    `;
+
+    // remove test accuracy button 
+    let testAccuracyButton = document.getElementById("testAccuracyButton");
+    testAccuracyButton.style.visibility = "hidden";
+
     return accuracy;
 }
 
