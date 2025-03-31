@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function redirectToNextLevel() {
-    window.location.href = nextLevelHTML;
+    window.location.href = "/AI-See/" + nextLevelHTML;
 }
 
 function playAgain() {
