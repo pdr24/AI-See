@@ -103,6 +103,7 @@ function prevStage() {
 function check_curr_stage_reset() {
     if (currStage > total_num_stages) {
         currStage = 1;
+        document.getElementById("nextButton").style.visibility = "visible";
     }
 }
 
