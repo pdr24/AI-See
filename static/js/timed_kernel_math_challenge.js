@@ -1,4 +1,4 @@
-const challengeLevelLength = 30; // 30 for now 
+const challengeLevelLength = 5; // 30 for now 
 let puzzles = []; // for storing all the puzzles
 let currentPuzzle = null; // stores the current puzzle that has been selected
 
@@ -239,8 +239,18 @@ function testAccuracy() {
 function showTimeUpModal() {
     // calculate and display accuracy 
     let accuracy = numCorrectAnswers / (1.0 * numAnswers) * 100;
-    // TODO: add better way to display the accuracy 
-    alert(`You got ${numCorrectAnswers} out of ${numAnswers} correct.Accuracy = ${accuracy}%`); // temporary accuracy display method 
 
-    // TODO: show next level and play again buttons 
+    // show accuracy div 
+    let container = document.getElementById("container");
+    container.innerHTML = `
+        <div class="accuracy-display-container" style="height: auto;">    
+            <p class="accuracy-display-text">Accuracy: ${accuracy}%</p>
+            
+            <button class="nextButton" onclick="redirectToNextLevel()">Next</button>
+        </div>
+    `;
+
+    // remove test accuracy button 
+    let testAccuracyButton = document.getElementById("testAccuracyButton");
+    testAccuracyButton.style.visibility = "hidden";
 }
