@@ -85,12 +85,12 @@ function testAccuracy() {
     // show accuracy div 
     let container = document.getElementById("leftContainer");
     container.innerHTML = `
-        <div class="accuracy-display-container" style="height: auto; padding: 20%;">    
-            <p class="accuracy-display-text">Accuracy: ${accuracy}%</p>
+        <div class="accuracy-display-container" ">    
+            <p class="accuracy-display-text">Accuracy: ${accuracy}% <br><br>You've reached the end. Play this level again or log out below</p>
             
             <div class="buttonRow">
                 <button class="playAgainButton" onclick="playAgain()">Play Again</button>
-                <button class="nextButton" onclick="redirectToNextLevel()">Next</button>
+                <button class="nextButton" onclick="redirectToNextLevel()">Log Out</button>
             </div>
         </div>
     `;
@@ -102,9 +102,6 @@ function testAccuracy() {
     return accuracy;
 }
 
-function displayAccuracy() {
-    // TODO
-}
 
 function applyKernel(kernel, inputImage) {
     const output = [];

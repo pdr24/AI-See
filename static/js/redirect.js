@@ -15,6 +15,13 @@ document.addEventListener("DOMContentLoaded", function () {
     currIndex = pageIdList.indexOf(currentPageId); // get index of page id 
     nextLevelIndex = currIndex + 1;
 
+    if (currIndex == (pageIdList.length - 1)) {
+        // redirect back to login page 
+        nextLevelIndex = 0
+        nextLevelId = pageIdList[nextLevelIndex]; 
+        nextLevelHTML = pageHTMLList[nextLevelIndex]; 
+    }
+
     nextLevelId = pageIdList[nextLevelIndex]; // get id of next page
     nextLevelHTML = pageHTMLList[nextLevelIndex]; // get html filename of next page 
 
@@ -28,4 +35,4 @@ function playAgain() {
     window.location.reload(); 
 }
 
-//TODO: maybe add logout functionality from the very last page or something like that 
+//TODO: improve logout functionality from the very last page or something like that (a temporary version is in the timed challenge level js file)
