@@ -1,22 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="static/css/styles.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <link rel="stylesheet" href="static/css/styles.css" />
 </head>
 
 <body data-page-id="login">
+  <img class="background-layer" src="static/assets/2striped_background.png" alt="Background Image" />
 
-    <img class="background-layer" src="static/assets/2striped_background.png" alt="Background Image" />
+  <h2>AI-See — Login</h2>
 
-    <h2>TODO: Login Page will be here</h2>
+  <div class="form-container">
+    <form id="loginForm" onsubmit="return handleLogin(event)">
+      <div class="name-container">
+        <input type="text" id="input1" name="input1" placeholder="First name" required oninput="changeFontColor('input1')" class="login-input" />
 
-    <button class="nextButton" onclick="redirectToNextLevel()">Login</button>
+        <input type="text" id="input2" name="input2" placeholder="Last initial" required oninput="changeFontColor('input2')" class="login-input" style="width: 20%;"/>
 
-    <script src="static/js/redirect.js"></script>
+        <select id="input3" name="input3" required onchange="changeFontColor('input3')" class="login-select">
+          <option value="" disabled selected>Grade level</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
+      </div>
 
+      <button class="nextButton" type="submit">Login</button>
+    </form>
+  </div>
+
+  <script src="static/js/redirect.js"></script>
+  <script>
+    function handleLogin(event) {
+      event.preventDefault();
+
+      // TODO: Add validation or data saving logic here
+
+      redirectToNextLevel(); // Redirect after login
+      return false;
+    }
+
+    function changeFontColor(id) {
+      const el = document.getElementById(id);
+      el.style.color = "black";
+    }
+  </script>
 </body>
+</html>

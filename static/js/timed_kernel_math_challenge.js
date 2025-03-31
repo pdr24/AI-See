@@ -1,4 +1,4 @@
-const challengeLevelLength = 5; // 30 for now 
+const challengeLevelLength = 30; // 30 for now 
 let puzzles = []; // for storing all the puzzles
 let currentPuzzle = null; // stores the current puzzle that has been selected
 
@@ -232,6 +232,8 @@ function showNextPuzzle() {
 function testAccuracy() {
     testSingleCellAccuracy(i1, j1);
     testSingleCellAccuracy(i2, j2);
+
+    numPuzzlesCompleted = numPuzzlesCompleted + 1;
 }
 
 function showTimeUpModal() {
@@ -242,7 +244,7 @@ function showTimeUpModal() {
     let container = document.getElementById("container");
     container.innerHTML = `
         <div class="accuracy-display-container" style="height: auto;">    
-            <p class="accuracy-display-text">Accuracy: ${accuracy}%</p>
+            <p class="accuracy-display-text">Accuracy: ${accuracy}% <br><br> Number of Puzzles Completed: ${numPuzzlesCompleted}</p>
             
             <div class="buttonRow">
                 <button class="playAgainButton" onclick="playAgain()">Play Again</button>

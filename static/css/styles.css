@@ -124,6 +124,60 @@ p {
     height: 70%;
 }
 
+/* ---------------------------------------------------------------------------------------------------------
+General 
+--------------------------------------------------------------------------------------------------------- */
+
+
+.form-container {
+    position: absolute;
+    width: 75%;
+    height: 60%;
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 20px;
+    border-radius: 20px;
+  }
+
+  input[type="text"], button {
+    padding: 1%;
+    font-size: 1.5vw;
+    margin-bottom: 1%;
+    width: 100%;
+  }
+
+  .name-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Ensures vertical alignment */
+    gap: 5vh;
+    margin-bottom: 5vh;
+  }
+  
+  .login-input,
+  .login-select {
+    height: 6vh;
+    font-size: 2.5vh;
+    color: gray;
+    border: 0.2vw solid rgba(73, 138, 12, 1);
+    border-radius: 20px;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+  
+  .login-input {
+    width: 20vw;
+  }
+  
+  .login-select {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  
+  
+  
+  
 
 /* ---------------------------------------------------------------------------------------------------------
 Feature Map Make-A-Match 
@@ -249,6 +303,7 @@ Kernel Math
     position: relative;
     bottom: 1vh;
     border-radius: 15%;
+    width: auto;
 }
 
 .nextStageButton:hover,
@@ -322,4 +377,21 @@ input[type=number] {
     background-color: #f3f3f3;
     border: 1px solid #999;
     border-radius: 4px;
+}
+
+.timeLevelInstructionContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;  
+    height: 60vh;   
+    margin: auto;
+    margin-bottom: 2%;
+    width: 50%;      
+    padding: 2%;
+    border: 5px solid black;
+    border-radius: 12%;
+    background-color: white;
+    font-size: 170%;
+    text-align: center;
+
 }

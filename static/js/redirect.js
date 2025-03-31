@@ -1,5 +1,5 @@
-const pageIdList = ["login", "cnn_introduction", "feature_map_introduction", "feature_map_match_level", "kernel_math_introduction", "kernel_math_level", "timed_kernel_math_challenge_level", "create_kernel_challenge_level"];
-const pageHTMLList = ["index.html", "introduction.html", "feature_map_intro.html", "feature_map_match_level.html", "kernel_math_intro.html", "kernel_math_level.html", "timed_kernel_math_challenge.html", "create_kernel_challenge.html"];
+const pageIdList = ["login", "cnn_introduction", "feature_map_introduction", "feature_map_match_level", "kernel_math_introduction", "kernel_math_level", "timed_challenge_intro", "timed_kernel_math_challenge_level", "create_kernel_challenge_level"];
+const pageHTMLList = ["index.html", "introduction.html", "feature_map_intro.html", "feature_map_match_level.html", "kernel_math_intro.html", "kernel_math_level.html", "timed_challenge_intro.html", "timed_kernel_math_challenge.html", "create_kernel_challenge.html"];
 
 let currentPageId = null;
 let nextLevelId = null;
