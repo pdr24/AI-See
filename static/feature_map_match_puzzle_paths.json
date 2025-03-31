@@ -1,0 +1,35 @@
+[
+    {
+      "id": 1,
+      "name": "0_enhanced",
+      "vertical": "../assets/matchPuzzles/0_enhanced/vertical.png",
+      "horizontal": "../assets/matchPuzzles/0_enhanced/horizontal.png",
+      "upward": "../assets/matchPuzzles/0_enhanced/upward.png",
+      "downward": "../assets/matchPuzzles/0_enhanced/downward.png"
+    },
+    {
+        "id": 2,
+        "name": "8_enhanced",
+        "vertical": "../assets/matchPuzzles/8_enhanced/vertical.png",
+        "horizontal": "../assets/matchPuzzles/8_enhanced/horizontal.png",
+        "upward": "../assets/matchPuzzles/8_enhanced/upward.png",
+        "downward": "../assets/matchPuzzles/8_enhanced/downward.png"
+      },
+      {
+        "id": 3,
+        "name": "infinity_enhanced",
+        "vertical": "../assets/matchPuzzles/infinity_enhanced/vertical.png",
+        "horizontal": "../assets/matchPuzzles/infinity_enhanced/horizontal.png",
+        "upward": "../assets/matchPuzzles/infinity_enhanced/upward.png",
+        "downward": "../assets/matchPuzzles/infinity_enhanced/downward.png"
+      },
+      {
+        "id": 4,
+        "name": "y_enhanced",
+        "vertical": "../assets/matchPuzzles/y_enhanced/vertical.png",
+        "horizontal": "../assets/matchPuzzles/y_enhanced/horizontal.png",
+        "upward": "../assets/matchPuzzles/y_enhanced/upward.png",
+        "downward": "../assets/matchPuzzles/y_enhanced/downward.png"
+      }
+    
+  ]
