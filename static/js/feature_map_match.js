@@ -218,3 +218,5 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error("Error loading puzzle JSON:", error);
         });
 });
+
+// TODO: fix bug with some feature maps disappearing when dropped into a dropzone
