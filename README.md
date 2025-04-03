@@ -1,6 +1,8 @@
 # CNN Tool
 
 Link to Live Version: https://pdr24.github.io/AI-See/
+Link to Presurvey: [todo]
+Link to Postsurvey: [todo]
 
 
 Developers: Pragathi Durga Rajarajan 
