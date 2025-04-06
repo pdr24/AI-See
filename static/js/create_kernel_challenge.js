@@ -131,6 +131,20 @@ function matrixToHTML(matrix, shouldColor) {
 
 
 function testAccuracy() {
+    // check for any blank inputs
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            const inputId = `cell-${i}-${j}`;
+            const inputElement = document.getElementById(inputId);
+            if (!inputElement) continue;
+
+            if (inputElement.tagName === "INPUT" && inputElement.value.trim() === "") {
+                alert("Please completely fill in the kernel on the right before testing your accuracy.");
+                return; // Stop execution if any input is blank
+            }
+        }
+    }
+
     // determine output map user's kernel would create on the input image 
     let inputImage = currentPuzzle.input_image;
     let correctFeatureMap = applyKernel(currentPuzzle.answer_kernel, inputImage);
