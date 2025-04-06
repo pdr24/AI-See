@@ -18,22 +18,6 @@ function validateForm() {
     return false; // Prevent form submission
 }
 
-
- // Add new users to locally stored JSON object
-function addUser(firstName, lastInitial, gradeLevel) {
-    user_identifying_info = {
-        fname : firstName,
-        linitial : lastInitial,
-        gradelevel : gradeLevel,
-        logintime : Math.floor(Date.now() / 1000) // current time in seconds (time since 1970)
-    }
-
-    localStorage.setItem('userinfo', JSON.stringify(user_identifying_info));
-
-    // set timed challenge level number to 1 for later use 
-    localStorage.setItem('timed_challenge_level_number', 1);
-}
-
 // UI purposes 
 function changeFontColor(id) {
     const el = document.getElementById(id);
