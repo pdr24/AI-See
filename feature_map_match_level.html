@@ -16,9 +16,9 @@
 
     <div class="containerMakeAMatch">
         <div class="leftMakeAMatch" id="leftContainer">
-            <p>Match each feature map with the kernel it was created by!</p>
+            <p>Match each feature map with the kernel it was created by! If you need to change your answers, use the 'Reset' button!</p>
             
-            <div class="feature-grid">
+            <div class="feature-grid" id="startZone">
                 <img class="draggable feature" id="feature1" src="static/assets/0_example/digit_0_vertical_edges.png" alt="Vertical Feature Map" draggable="true">
                 <img class="draggable feature" id="feature2" src="static/assets/0_example/digit_0_horizontal_edges.png" alt="Horizontal Feature Map" draggable="true">
                 <img class="draggable feature" id="feature3" src="static/assets/0_example/digit_0_diagonal_1_edges.png" alt="Upward Diagonal Feature Map" draggable="true">
@@ -43,6 +43,7 @@
     </div>
 
     <button class="nextButton" id="testAccuracyButton">Test Accuracy</button>
+    <button class="nextButton" id="resetButton">Reset</button>
 
     <script src="static/js/feature_map_match.js"></script>
     <script src="static/js/redirect.js"></script>
