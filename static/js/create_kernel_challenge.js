@@ -52,8 +52,26 @@ function displayPuzzle() {
             </div>
         </div>
     `;
+
 }
 
+
+function setupInputColoring() {
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            const input = document.getElementById(`cell-${i}-${j}`);
+            if (!input) continue;
+
+            input.addEventListener("input", () => {
+                const val = parseInt(input.value);
+                const bgColor = colorMatrixValue(val);
+                const textColor = "#00aff1";
+                input.style.backgroundColor = bgColor;
+                input.style.color = textColor;
+            });
+        }
+    }
+}
 
 function colorMatrixValue(val) {
     const colorMap = {
