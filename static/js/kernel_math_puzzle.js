@@ -34,8 +34,8 @@ function displayPuzzle() {
         return;
     }
 
-    const inputImageHTML = matrixToHTML(currentPuzzle.input_image);
-    const kernelHTML = matrixToHTML(currentPuzzle.kernel);
+    const inputImageHTML = matrixToHTML(currentPuzzle.input_image, true);
+    const kernelHTML = matrixToHTML(currentPuzzle.kernel, false);
 
     puzzleTextElement.innerHTML = `
     <p>Calculate the feature map the computer would get when applying this kernel on this input image:</p>
@@ -53,14 +53,50 @@ function displayPuzzle() {
 
 }
 
+function colorMatrixValue(val) {
+    const colorMap = {
+        0: "#FFFFFF",
+        1: "#000000",
+        2: "#262626",
+        3: "#404040",
+        4: "#595959",
+        5: "#7f7f7f",
+        6: "#a6a6a6",
+        7: "#bfbfbf",
+        8: "#d9d9d9",
+        9: "#f2f2f2"
+    };
+    return colorMap[val] || "#FFFFFF"; // default to white if value is out of range
+}
+
 // helper function for displaying matrices nicely 
-function matrixToHTML(matrix) {
-    return `<table class="matrix">` +
+function matrixToHTML(matrix, shouldColor) {
+    if (shouldColor) {
+        return `<table class="matrix">` +
         matrix.map(row =>
-            `<tr>${row.map(val => `<td>${val}</td>`).join("")}</tr>`
+            `<tr>` +
+            row.map(val => {
+                const bgColor = colorMatrixValue(val);
+                const textColor = bgColor === "#000000" ? "white" : "black";
+                return `<td style="border-color: #2260b3; background-color: ${bgColor}; color: ${textColor};">${val}</td>`;
+            }).join("") +
+            `</tr>`
         ).join("") +
         `</table>`;
+
+    }
+    else {
+        return `<table class="matrix">` +
+            matrix.map(row =>
+                `<tr>` +
+                row.map(val => `<td style="background-color: #c6e7ff;">${val}</td>`).join("") +
+                `</tr>`
+            ).join("") +
+            `</table>`;
+
+    }
 }
+
 
 function testAccuracy() {
     // TODO: prompt user to complete the puzzle if any input fields are blank 
