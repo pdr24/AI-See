@@ -12,8 +12,9 @@ function validateForm() {
     // save current user's info to local storage
     addUser(input1, input2, input3);
 
+    // redirect to next page upon successful login 
     redirectToNextLevel();
-    
+
     return false; // Prevent form submission
 }
 
