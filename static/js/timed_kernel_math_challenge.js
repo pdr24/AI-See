@@ -291,7 +291,13 @@ function testAccuracy() {
 
 function showTimeUpModal() {
     // calculate and display accuracy 
-    let accuracy = numCorrectAnswers / (1.0 * numAnswers) * 100;
+    let accuracy = null;
+    if (numAnswers == 0) {
+        accuracy = 0;
+    }
+    else {
+        accuracy = numCorrectAnswers / (1.0 * numAnswers) * 100;
+    }
     let finalScore = accuracy * numPuzzlesCompleted;
 
     // show accuracy div 
