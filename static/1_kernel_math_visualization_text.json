@@ -25,21 +25,21 @@
 
     { "stage": 13, "text": "Finally, we can enter the result (3) into the corresponding box in the feature map. " },
 
-    { "stage": 14, "text": "Now, we slide the kernel and repeat the math to find the value to put into the next box of the feature map: <br><br>(0 x 1) + (1 x 0) + (0 x 1) + <br>(1 x 1) + (1 x 0) + (0 x 1) +       =       1 <br>(0 x 1) + (1 x 0) + (0 x 1) <br>" },
+    { "stage": 14, "text": "Now, we slide the kernel and repeat the math to find the value to put into the next box of the feature map. <br><br>Hint: We can also just count the number of spots where 1s overlap between the input image and kernel since we're only working with 0s and 1s. <br><br>(0 x 1) + (1 x 0) + (0 x 1) + <br>(1 x 1) + (1 x 0) + (0 x 1) +       =       1 <br>(0 x 1) + (1 x 0) + (0 x 1) <br>" },
 
-    { "stage": 15, "text": "We repeat this each time we slide the kernel: <br><br>(1 x 1) + (0 x 0) + (0 x 1) + <br>(1 x 1) + (0 x 0) + (0 x 1) +       =       3 <br>(1 x 1) + (0 x 0) + (0 x 1) <br>" },
+    { "stage": 15, "text": "We repeat this each time we slide the kernel. <br><br>Hint: We can also just count the number of spots where 1s overlap between the input image and kernel since we're only working with 0s and 1s. <br><br>(1 x 1) + (0 x 0) + (0 x 1) + <br>(1 x 1) + (0 x 0) + (0 x 1) +       =       3 <br>(1 x 1) + (0 x 0) + (0 x 1) <br>" },
 
-    { "stage": 16, "text": "We repeat this each time we slide the kernel: <br><br>(0 x 1) + (1 x 0) + (1 x 1) + <br>(0 x 1) + (0 x 0) + (1 x 1) +       =       3 <br>(0 x 1) + (0 x 0) + (1 x 1) <br>" },
+    { "stage": 16, "text": "We repeat this each time we slide the kernel. <br><br>Hint: We can also just count the number of spots where 1s overlap between the input image and kernel since we're only working with 0s and 1s. <br><br>(0 x 1) + (1 x 0) + (1 x 1) + <br>(0 x 1) + (0 x 0) + (1 x 1) +       =       3 <br>(0 x 1) + (0 x 0) + (1 x 1) <br>" },
 
-    { "stage": 17, "text": "We repeat this each time we slide the kernel: <br><br>(1 x 1) + (1 x 0) + (0 x 1) + <br>(0 x 1) + (1 x 0) + (0 x 1) +       =       1 <br>(0 x 1) + (1 x 0) + (0 x 1) <br>" },
+    { "stage": 17, "text": "We repeat this each time we slide the kernel. <br><br>Hint: We can also just count the number of spots where 1s overlap between the input image and kernel since we're only working with 0s and 1s. <br><br>(1 x 1) + (1 x 0) + (0 x 1) + <br>(0 x 1) + (1 x 0) + (0 x 1) +       =       1 <br>(0 x 1) + (1 x 0) + (0 x 1) <br>" },
 
-    { "stage": 18, "text": "We repeat this each time we slide the kernel: <br><br>(1 x 1) + (0 x 0) + (0 x 1) + <br>(1 x 1) + (0 x 0) + (0 x 1) +       =       3 <br>(1 x 1) + (0 x 0) + (0 x 1) <br>" },
+    { "stage": 18, "text": "We repeat this each time we slide the kernel. <br><br>Hint: We can also just count the number of spots where 1s overlap between the input image and kernel since we're only working with 0s and 1s. <br><br>(1 x 1) + (0 x 0) + (0 x 1) + <br>(1 x 1) + (0 x 0) + (0 x 1) +       =       3 <br>(1 x 1) + (0 x 0) + (0 x 1) <br>" },
 
-    { "stage": 19, "text": "We repeat this each time we slide the kernel: <br><br>(0 x 1) + (0 x 0) + (1 x 1) + <br>(0 x 1) + (0 x 0) + (1 x 1) +       =       3 <br>(0 x 1) + (1 x 0) + (1 x 1) <br>" },
+    { "stage": 19, "text": "We repeat this each time we slide the kernel. <br><br>Hint: We can also just count the number of spots where 1s overlap between the input image and kernel since we're only working with 0s and 1s. <br><br>(0 x 1) + (0 x 0) + (1 x 1) + <br>(0 x 1) + (0 x 0) + (1 x 1) +       =       3 <br>(0 x 1) + (1 x 0) + (1 x 1) <br>" },
 
-    { "stage": 20, "text": "We repeat this each time we slide the kernel: <br><br>(0 x 1) + (1 x 0) + (0 x 1) + <br>(0 x 1) + (1 x 0) + (0 x 1) +       =       2 <br>(1 x 1) + (1 x 0) + (1 x 1) <br>" },
+    { "stage": 20, "text": "We repeat this each time we slide the kernel. <br><br>Hint: We can also just count the number of spots where 1s overlap between the input image and kernel since we're only working with 0s and 1s. <br><br>(0 x 1) + (1 x 0) + (0 x 1) + <br>(0 x 1) + (1 x 0) + (0 x 1) +       =       2 <br>(1 x 1) + (1 x 0) + (1 x 1) <br>" },
 
-    { "stage": 21, "text": "We repeat this each time we slide the kernel: <br><br>(1 x 1) + (0 x 0) + (0 x 1) + <br>(1 x 1) + (0 x 0) + (0 x 1) +       =       3 <br>(1 x 1) + (1 x 0) + (0 x 1) <br>" },
+    { "stage": 21, "text": "We repeat this each time we slide the kernel. <br><br>Hint: We can also just count the number of spots where 1s overlap between the input image and kernel since we're only working with 0s and 1s. <br><br>(1 x 1) + (0 x 0) + (0 x 1) + <br>(1 x 1) + (0 x 0) + (0 x 1) +       =       3 <br>(1 x 1) + (1 x 0) + (0 x 1) <br>" },
 
     { "stage": 22, "text": "So that’s how kernel math works! The computer can then use this feature map to understand certain patterns in the input image. Notice how it detected a vertical line (in the darker colors)." }
 
