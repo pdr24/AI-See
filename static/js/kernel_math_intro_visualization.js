@@ -1,5 +1,5 @@
 var currStage = 1; // keeps track of the stage of the introduction the user is currently on 
-const total_num_stages = 22; // defines total number of stages (= number of stage images)
+const total_num_stages = 23; // defines total number of stages (= number of stage images)
 let stageData = [];
 
 // display stage 0 upon loading the html page 
@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 function showStage() {
+
     // determine correct image path for current stage 
     let image_curr_stage = currStage + ".png";
     let path_image_curr_stage = "static/assets/1_vertical_visualization/" + image_curr_stage;
@@ -83,28 +84,35 @@ function nextStage() {
 
     // update current stage tracker 
     currStage = currStage + 1;
-    check_curr_stage_reset();
 
     // show next stage
     showStage(); 
+
+    check_curr_stage_reset();
 }
 
 function prevStage() {
     console.log("Previous Stage button has been clicked");
 
+    // stay on current page if currStage is 1
+    if (currStage == 1) {
+        return;
+    }
+
     // update current stage tracker 
     currStage = currStage - 1;
-    check_curr_stage_reset();
 
     // show prev stage 
     showStage();
+
+    check_curr_stage_reset();
 }
 
 function check_curr_stage_reset() {
-    if (currStage > total_num_stages) {
+    if (currStage == total_num_stages) {
         currStage = 1;
         document.getElementById("nextButton").style.visibility = "visible";
     }
 }
 
-// TODO: outline stages here 
+// TODO: add prev functionality from the final stage 
