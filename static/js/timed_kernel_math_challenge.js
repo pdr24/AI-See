@@ -292,13 +292,15 @@ function testAccuracy() {
 function showTimeUpModal() {
     // calculate and display accuracy 
     let accuracy = numCorrectAnswers / (1.0 * numAnswers) * 100;
+    let finalScore = accuracy * numPuzzlesCompleted;
 
     // show accuracy div 
     let container = document.getElementById("container");
     container.innerHTML = `
         <div class="accuracy-display-container" style="height: auto;">    
             <p class="accuracy-display-text">Accuracy: ${accuracy}% <br><br> Number of Puzzles Completed: ${numPuzzlesCompleted}</p>
-            
+            <p class="accuracy-display-text"><b>Final Score: ${finalScore}</b></p>
+
             <div class="buttonRow">
                 <button class="playAgainButton" onclick="playAgain()">Play Again</button>
                 <button class="nextButton" onclick="redirectToNextLevel()">Next</button>
