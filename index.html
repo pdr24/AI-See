@@ -24,7 +24,7 @@
   <h2>AI-See — Login</h2>
 
   <div class="form-container">
-    <form id="loginForm" onsubmit="return handleLogin(event)">
+    <form id="loginForm" onsubmit="return validateForm()">
       <div class="name-container">
         <input type="text" id="input1" name="input1" placeholder="First name" required oninput="changeFontColor('input1')" class="login-input" />
 
@@ -43,20 +43,7 @@
   </div>
 
   <script src="static/js/redirect.js"></script>
-  <script>
-    function handleLogin(event) {
-      event.preventDefault();
+  <script src="static/js/login.js"></script>
 
-      // TODO: Add validation or data saving logic here
-
-      redirectToNextLevel(); // Redirect after login
-      return false;
-    }
-
-    function changeFontColor(id) {
-      const el = document.getElementById(id);
-      el.style.color = "black";
-    }
-  </script>
 </body>
 </html>
