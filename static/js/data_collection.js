@@ -29,9 +29,31 @@ function addUser(firstName, lastInitial, gradeLevel) {
     localStorage.setItem('timed_challenge_level_number', 1);
 }
 
-function collectTimeOnLevel() {
+function collectTimeOnLevel(startTime, pageID) {
+    // Calculate time spent on level
+    const timeSpent = Math.floor(Date.now() / 1000) - startTime;
 
+    // Get user key
+    const userKey = getUserKey();
+
+    // Retrieve existing data for this user
+    let userData = localStorage.getItem(userKey);
+    userData = userData ? JSON.parse(userData) : {};
+
+    // Ensure time_spent_on_pages is an object
+    if (typeof userData['time_spent_on_pages'] !== 'object' || Array.isArray(userData['time_spent_on_pages'])) {
+        userData['time_spent_on_pages'] = {};
+    }
+
+    // Add or update time for this page
+    userData['time_spent_on_pages'][pageID] = timeSpent;
+
+    // Save updated data back to localStorage
+    localStorage.setItem(userKey, JSON.stringify(userData));
+
+    localStorage.setItem('mainkey', userKey);
 }
+
 
 function collectFeatureMapMatchData() {
 
