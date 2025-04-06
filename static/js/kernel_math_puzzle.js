@@ -78,7 +78,7 @@ function matrixToHTML(matrix, shouldColor) {
             row.map(val => {
                 const bgColor = colorMatrixValue(val);
                 const textColor = bgColor === "#000000" ? "white" : "black";
-                return `<td style="border-color: #2260b3; background-color: ${bgColor}; color: ${textColor};">${val}</td>`;
+                return `<td style="border-color: #00aff1; background-color: ${bgColor}; color: ${textColor};">${val}</td>`;
             }).join("") +
             `</tr>`
         ).join("") +
