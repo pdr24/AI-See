@@ -28,8 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function redirectToNextLevel() {
-    // window.location.href = "/AI-See/" + nextLevelHTML; // needed for deployment from github pages 
-    window.location.href = nextLevelHTML;
+    window.location.href = "/AI-See/" + nextLevelHTML; // needed for deployment from github pages 
+    // window.location.href = nextLevelHTML;
 }
 
 function playAgain() {
