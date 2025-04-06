@@ -36,17 +36,28 @@ function displayPuzzle() {
 
     const inputImageHTML = matrixToHTML(currentPuzzle.input_image, true);
     const kernelHTML = matrixToHTML(currentPuzzle.kernel, false);
+    const questionHTML = matrixToHTML([["?", "?", "?"], ["?", "?", "?"], ["?", "?", "?"]], true);
 
     puzzleTextElement.innerHTML = `
         <p>Calculate the feature map the computer would get when applying this kernel on this input image:</p>
-        <div style="display: flex; gap: 15%; align-items: flex-start; margin: 5%">
+        <div style="display: flex; gap: 5%; align-items: flex-start; margin: 5%">
             <div>
                 <strong>Input Image:</strong><br>
                 ${inputImageHTML}
             </div>
             <div>
+                <p><br><b>*</b></p>
+            </div>
+            <div>
                 <strong>Kernel:</strong><br>
                 ${kernelHTML}
+            </div>
+            <div>
+                <p><br><b>=</b></p>
+            </div>
+            <div>
+                <strong>Feature Map:</strong><br>
+                ${questionHTML}
             </div>
         </div>
     `;
