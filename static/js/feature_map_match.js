@@ -115,9 +115,18 @@ function drawPuzzle(selected) {
     });
 
     document.getElementById("testAccuracyButton").addEventListener("click", function () {
-        let correctCount = 0;
         let totalMatches = Object.keys(correctMatches).length;
 
+        // Check for incomplete matches
+        for (let feature in correctMatches) {
+            if (!userMatches[feature]) {
+                alert("Please complete the puzzle by matching all feature maps to kernels before testing your accuracy.");
+                return;
+            }
+        }
+
+        // Calculate accuracy
+        let correctCount = 0;
         for (let feature in correctMatches) {
             if (correctMatches[feature] === userMatches[feature]) {
                 correctCount++;
@@ -125,7 +134,7 @@ function drawPuzzle(selected) {
         }
 
         let accuracy = (correctCount / totalMatches) * 100;
-
+        
         let leftContainer = document.getElementById("leftContainer");
         leftContainer.innerHTML = `
             <div class="accuracy-display-container">    

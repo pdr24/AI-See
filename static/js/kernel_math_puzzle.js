@@ -129,7 +129,19 @@ function setupInputColoring() {
 
 
 function testAccuracy() {
-    // TODO: prompt user to complete the puzzle if any input fields are blank 
+    // check for any blank inputs
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            const inputId = `cell-${i}-${j}`;
+            const inputElement = document.getElementById(inputId);
+            if (!inputElement) continue;
+
+            if (inputElement.tagName === "INPUT" && inputElement.value.trim() === "") {
+                alert("Please completely fill in the feature map on the right before testing your accuracy.");
+                return; // Stop execution if any input is blank
+            }
+        }
+    }
 
     // calculate user's accuracy 
     const correctMap = applyKernel(currentPuzzle.kernel, currentPuzzle.input_image);

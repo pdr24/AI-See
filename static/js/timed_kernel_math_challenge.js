@@ -1,4 +1,4 @@
-const challengeLevelLength = 30; // 30 for now 
+const challengeLevelLength = 60; // 60 for now 
 let puzzles = []; // for storing all the puzzles
 let currentPuzzle = null; // stores the current puzzle that has been selected
 
@@ -70,7 +70,7 @@ function displayPuzzle() {
     const inputImageHTML = matrixToHTML(currentPuzzle.input_image, true);
     const kernelHTML = matrixToHTML(currentPuzzle.kernel, false);
     const questionHTML = matrixToHTML([["?", "?", "?"], ["?", "?", "?"], ["?", "?", "?"]], true);
-    
+
     puzzleTextElement.innerHTML = `
         <p>Complete the feature map shown to the right, where the kernel below is applied on the input image below.</p>
         
@@ -287,6 +287,20 @@ function testSingleCellAccuracy(i, j) {
 }
 
 function showNextPuzzle() {
+    // check for any blank inputs
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            const inputId = `cell-${i}-${j}`;
+            const inputElement = document.getElementById(inputId);
+            if (!inputElement) continue;
+
+            if (inputElement.tagName === "INPUT" && inputElement.value.trim() === "") {
+                alert("Please completely fill in the feature map on the right before testing your accuracy.");
+                return; // Stop execution if any input is blank
+            }
+        }
+    }
+
     testAccuracy();
 
     chooseRandomPuzzle();
@@ -314,14 +328,16 @@ function showTimeUpModal() {
     // show accuracy div 
     let container = document.getElementById("container");
     container.innerHTML = `
-        <div class="accuracy-display-container" style="height: auto;">    
-            <p class="accuracy-display-text">Accuracy: ${accuracy}% <br><br> Number of Puzzles Completed: ${numPuzzlesCompleted}</p>
-            <p class="accuracy-display-text"><b>Final Score: ${finalScore}</b></p>
+        <div class="accuracy-display-container" style="height: 35vh;">  
+            <div>  
+                <p class="accuracy-display-text">Accuracy: ${accuracy}% <br><br> Number of Puzzles Completed: ${numPuzzlesCompleted}</p>
+                <p class="accuracy-display-text"><b>Final Score: ${finalScore}</b></p>
 
-            <div class="buttonRow">
-                <button class="playAgainButton" onclick="playAgain()">Play Again</button>
-                <button class="nextButton" onclick="redirectToNextLevel()">Next</button>
-            </div>
+                <div class="buttonRow">
+                    <button class="playAgainButton" onclick="playAgain()">Play Again</button>
+                    <button class="nextButton" onclick="redirectToNextLevel()">Next</button>
+                </div>
+            <div>
         </div>
     `;
 
