@@ -110,15 +110,22 @@ function displayIncompleteFeatureMap(kernel, inputImage) {
 }
 
 function displayCompleteFeatureMap(featureMap) {
-        for (let i = 0; i < 3; i++) {
-            for (let j = 0; j < 3; j++) {
-                const input = document.getElementById(`cell-${i}-${j}`);
-                const td = input.parentElement;
-    
-                // Replace the input with a span showing the value
-                td.innerHTML = `<span id="cell-${i}-${j}" class="locked-cell">${featureMap[i][j]}</span>`;
-            }
-        }    
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            const input = document.getElementById(`cell-${i}-${j}`);
+            const td = input.parentElement;
+
+            // Replace the input with a span showing the value
+            const bgColor = colorMatrixValue(featureMap[i][j]);
+            const textColor = "#00aff1";
+            td.innerHTML = `
+                <span id="cell-${i}-${j}" class="locked-cell" 
+                    style="display: block; background-color: ${bgColor}; color: ${textColor}; border: 3px solid #00aff1; padding: 8px;">
+                    ${featureMap[i][j]}
+                </span>`;
+
+        }
+    }    
 }
 
 // allow user to input into a specific cell 
@@ -133,8 +140,19 @@ function unlockCell(i, j) {
 
     const td = span.parentElement;
 
-    td.innerHTML = `<input type="number" class="feature-map-input" id="${cellId}">`;
+    td.innerHTML = `<input type="number" class="feature-map-input" id="${cellId}" 
+                        oninput="updateInputColor(this)">`;
 }
+
+function updateInputColor(inputElement) {
+    const value = parseInt(inputElement.value);
+    const bgColor = colorMatrixValue(value);
+    const textColor = "#00aff1";
+
+    inputElement.style.backgroundColor = bgColor;
+    inputElement.style.color = textColor;
+}
+
 
 function applyKernel(kernel, inputImage) {
     const output = [];
