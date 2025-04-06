@@ -36,14 +36,26 @@ function displayPuzzle() {
     const inputImageHTML = matrixToHTML(currentPuzzle.input_image, true);
     const featureMapHTML = matrixToHTML(applyKernel(currentPuzzle.answer_kernel, currentPuzzle.input_image), true);
     const puzzleInstructions = currentPuzzle.instructions;
-
+    const questionHTML = matrixToHTML([["?", "?", "?"], ["?", "?", "?"], ["?", "?", "?"]], false);
+    
     puzzleTextElement.innerHTML = `
         <div>    
             <p style="font-size: 80%">${puzzleInstructions}</p>
-            <div style="display: flex; gap: 15%; align-items: flex-start; margin: 5%">
+
+            <div style="display: flex; gap: 5%; align-items: flex-start; margin: 5%">
                 <div>
                     <strong>Input Image:</strong><br>
                     ${inputImageHTML}
+                </div>
+                <div>
+                    <p><br><b>*</b></p>
+                </div>
+                <div>
+                    <strong>Kernel:</strong><br>
+                    ${questionHTML}
+                </div>
+                <div>
+                    <p><br><b>=</b></p>
                 </div>
                 <div>
                     <strong>Feature Map:</strong><br>
