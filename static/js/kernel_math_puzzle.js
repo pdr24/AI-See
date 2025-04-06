@@ -38,18 +38,20 @@ function displayPuzzle() {
     const kernelHTML = matrixToHTML(currentPuzzle.kernel, false);
 
     puzzleTextElement.innerHTML = `
-    <p>Calculate the feature map the computer would get when applying this kernel on this input image:</p>
-    <div style="display: flex; gap: 15%; align-items: flex-start; margin: 5%">
-        <div>
-            <strong>Input Image:</strong><br>
-            ${inputImageHTML}
+        <p>Calculate the feature map the computer would get when applying this kernel on this input image:</p>
+        <div style="display: flex; gap: 15%; align-items: flex-start; margin: 5%">
+            <div>
+                <strong>Input Image:</strong><br>
+                ${inputImageHTML}
+            </div>
+            <div>
+                <strong>Kernel:</strong><br>
+                ${kernelHTML}
+            </div>
         </div>
-        <div>
-            <strong>Kernel:</strong><br>
-            ${kernelHTML}
-        </div>
-    </div>
-`;
+    `;
+
+    setupInputColoring(); // color cells as user enters input 
 
 }
 
@@ -77,7 +79,7 @@ function matrixToHTML(matrix, shouldColor) {
             `<tr>` +
             row.map(val => {
                 const bgColor = colorMatrixValue(val);
-                const textColor = bgColor === "#000000" ? "white" : "black";
+                const textColor = "#00aff1";
                 return `<td style="border-color: #00aff1; background-color: ${bgColor}; color: ${textColor};">${val}</td>`;
             }).join("") +
             `</tr>`
@@ -94,6 +96,23 @@ function matrixToHTML(matrix, shouldColor) {
             ).join("") +
             `</table>`;
 
+    }
+}
+
+function setupInputColoring() {
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            const input = document.getElementById(`cell-${i}-${j}`);
+            if (!input) continue;
+
+            input.addEventListener("input", () => {
+                const val = parseInt(input.value);
+                const bgColor = colorMatrixValue(val);
+                const textColor = "#00aff1";
+                input.style.backgroundColor = bgColor;
+                input.style.color = textColor;
+            });
+        }
     }
 }
 
