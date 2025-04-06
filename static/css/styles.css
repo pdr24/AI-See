@@ -26,7 +26,8 @@ html, body {
 h2 {
     text-align: center; /* Centers text horizontally */
     width: 100%; /* Ensures it takes the full width */
-    margin: 2%;
+    margin-bottom: 2%;
+    margin-top: 1.25%;
     font-family:'Monaco';
     font-size: 250%;
 }
@@ -125,9 +126,46 @@ p {
 }
 
 /* ---------------------------------------------------------------------------------------------------------
-General 
+Progress Bar 
 --------------------------------------------------------------------------------------------------------- */
 
+.progressButtonComplete {
+    position: relative;
+    width: 3vh;
+    height: 3vh;
+    border-radius: 50%;
+    outline: rgba(34, 96, 179, 0.85);
+    background-color: rgba(34, 96, 179, 0.85);
+    padding: 0;
+    margin-bottom: 0% !important;
+    
+  }
+  .progressButtonCurrent {
+    position: relative;
+    width: 3vh;
+    height: 3vh;
+    border-radius: 50%;
+    outline: rgba(0, 175, 250, 0.75);
+    background-color: rgba(0, 175, 250, 0.75);
+    padding: 0;
+    margin-bottom: 0% !important;
+    
+  }
+  .progressButtonFuture {
+    position: relative;
+    width: 3vh;
+    height: 3vh;
+    border-radius: 50%;
+    outline: rgba(0, 100, 100, 100.85);
+    background-color: rgba(100, 100, 100, 0.85);
+    padding: 0;
+    margin-bottom: 0% !important;
+    
+  }
+
+/* ---------------------------------------------------------------------------------------------------------
+Login 
+--------------------------------------------------------------------------------------------------------- */
 
 .form-container {
     position: absolute;
