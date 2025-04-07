@@ -54,8 +54,42 @@ function collectTimeOnLevel(startTime, pageID) {
     localStorage.setItem('mainkey', userKey);
 }
 
+// collect data on a feature map make-a-match puzzle 
+function collectFeatureMapMatchData(accuracy, timeSpent, isVerticalCorrect, isHorizontalCorrect, isUpwardCorrect, isDownwardCorrect, numResetClicks) {
+    const data = {
+            timeSpent : timeSpent,
+            accuracy : accuracy,
+            isVerticalCorrect : isVerticalCorrect,
+            isHorizontalCorrect : isHorizontalCorrect,
+            isUpwardCorrect : isUpwardCorrect,
+            isDownwardCorrect : isDownwardCorrect,
+            numResetClicks : numResetClicks
+        }
 
-function collectFeatureMapMatchData() {
+    // get user key 
+    var userKey = getUserKey();
+
+    // Retrieve existing data for this user
+    let userData = localStorage.getItem(userKey);
+    if (userData) {
+        userData = JSON.parse(userData);
+    } else {
+        userData = {};
+    }
+
+    // Initialize puzzles array if it doesn't exist in userData 
+    if (!userData.feature_map_match_puzzles) {
+        userData.feature_map_match_puzzles = [];
+    }
+
+    // push puzzle data to userData puzzles array  
+    userData.feature_map_match_puzzles.push(data);
+
+    // Save updated data back to local storage
+    localStorage.setItem(userKey, JSON.stringify(userData));
+
+    // new addition
+    localStorage.setItem('mainkey', JSON.stringify(userKey));
 
 }
 

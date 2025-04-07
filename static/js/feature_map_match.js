@@ -7,8 +7,13 @@ let selected = null;
 let correctMatches = {};
 let userMatches = {};
 let kernels = null; 
+let startTime = null; 
+let numResetClicks = 0;
+let featureIdToKernelType = {};  // store mapping of where each kernel is 
 
 document.addEventListener("DOMContentLoaded", function () {
+    startTime = Math.floor(Date.now() / 1000); // save start time 
+
     fetch("static/feature_map_match_puzzle_paths.json")
         .then(response => response.json())
         .then(puzzles => {
@@ -64,6 +69,8 @@ function drawPuzzle(selected) {
     
         // store the correct match based on what image was assigned to this feature
         correctMatches[featureId] = kernelToDropzone[kernelType];
+
+        featureIdToKernelType[featureId] = kernelType; // save where each kernel is 
     });
 
 
@@ -126,14 +133,29 @@ function drawPuzzle(selected) {
         }
 
         // Calculate accuracy
+        let isVerticalCorrect = false;
+        let isHorizontalCorrect = false;
+        let isUpwardCorrect = false;
+        let isDownwardCorrect = false;
         let correctCount = 0;
+
         for (let feature in correctMatches) {
-            if (correctMatches[feature] === userMatches[feature]) {
-                correctCount++;
-            }
+            const isCorrect = correctMatches[feature] === userMatches[feature];
+            const kernelType = featureIdToKernelType[feature];
+        
+            if (kernelType === "vertical") isVerticalCorrect = isCorrect;
+            if (kernelType === "horizontal") isHorizontalCorrect = isCorrect;
+            if (kernelType === "upward") isUpwardCorrect = isCorrect;
+            if (kernelType === "downward") isDownwardCorrect = isCorrect;
+        
+            if (isCorrect) correctCount++;
         }
 
+
         let accuracy = (correctCount / totalMatches) * 100;
+        let timeSpent = Math.floor(Date.now() / 1000) - startTime;
+
+        collectFeatureMapMatchData(accuracy, timeSpent, isVerticalCorrect, isHorizontalCorrect, isUpwardCorrect, isDownwardCorrect, numResetClicks)
         
         let leftContainer = document.getElementById("leftContainer");
         leftContainer.innerHTML = `
@@ -267,6 +289,8 @@ function resetLevel() {
 
     // Optionally, reset layout visually or show feedback
     console.log("Level reset.");
+
+    numResetClicks = numResetClicks + 1;
 }
 
 

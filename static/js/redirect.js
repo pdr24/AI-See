@@ -32,6 +32,15 @@ function redirectToNextLevel() {
     window.location.href = nextLevelHTML;
 }
 
+function next() {
+    // get html page id 
+    let pageID = document.body.getAttribute("data-page-id");
+
+    collectTimeOnLevel(startTime, pageID); // save time spent on page
+    
+    redirectToNextLevel(); // redirect to the next level 
+}
+
 function playAgain() {
     window.location.reload(); 
 }
