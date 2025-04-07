@@ -1,8 +1,11 @@
 let puzzles = []; // for storing all the puzzles
 let currentPuzzle = null; // stores the current puzzle that has been selected
+let startTime = null;
 
 // load and display a puzzle when the html page loads
 document.addEventListener("DOMContentLoaded", function () {
+
+    startTime = Math.floor(Date.now() / 1000); // save start time 
 
     fetch("static/create_kernel_challenge_puzzles.json")
         .then(response => response.json())
@@ -224,4 +227,3 @@ function readUserInputKernel() {
 
     return matrix;
 }
-

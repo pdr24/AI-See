@@ -93,6 +93,37 @@ function collectFeatureMapMatchData(accuracy, timeSpent, isVerticalCorrect, isHo
 
 }
 
+function collectStageDataKernelMathVisualization(startTime, currStage) {
+    // Calculate time spent on the current stage 
+    const timeSpent = Math.floor(Date.now() / 1000) - startTime;
+
+    // Get user key
+    const userKey = getUserKey();
+
+    // Retrieve existing data for this user
+    let userData = localStorage.getItem(userKey);
+    userData = userData ? JSON.parse(userData) : {};
+
+    // Ensure the container is an object
+    if (typeof userData['kernel_math_visualization_stage_time_spent'] !== 'object' || Array.isArray(userData['kernel_math_visualization_stage_time_spent'])) {
+        userData['kernel_math_visualization_stage_time_spent'] = {};
+    }
+
+    // Ensure the stage is initialized as an array
+    if (!Array.isArray(userData['kernel_math_visualization_stage_time_spent'][currStage])) {
+        userData['kernel_math_visualization_stage_time_spent'][currStage] = [];
+    }
+
+    // Push this session's time to the array
+    userData['kernel_math_visualization_stage_time_spent'][currStage].push(timeSpent);
+
+    // Save updated data back to localStorage
+    localStorage.setItem(userKey, JSON.stringify(userData));
+
+    // Also store main key for reference
+    localStorage.setItem('mainkey', userKey);
+}
+
 function collectKernelMathData() {
 
 }

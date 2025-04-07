@@ -1,9 +1,14 @@
 var currStage = 1; // keeps track of the stage of the introduction the user is currently on 
 const total_num_stages = 23; // defines total number of stages (= number of stage images)
 let stageData = [];
+let startTime = null;
+let timeSpentCurrStage = null;
+let timeCurrStageEntered = null;
 
 // display stage 0 upon loading the html page 
 document.addEventListener("DOMContentLoaded", function () {
+    startTime = Math.floor(Date.now() / 1000); // save start time 
+
     fetch("static/1_kernel_math_visualization_text.json")
         .then(response => response.json())
         .then(data => {
@@ -23,6 +28,8 @@ function showStage() {
 
     // display corresponding image 
     drawImageOnCanvas(path_image_curr_stage);
+
+    timeCurrStageEntered = Math.floor(Date.now() / 1000); // save time user entered the current stage 
 }
 
 function drawImageOnCanvas(imageSrc) {
@@ -82,6 +89,9 @@ function roundedRect(ctx, x, y, width, height, radius) {
 function nextStage() {
     console.log("Next Stage button has been clicked");
 
+    // save time spent on curr stage 
+    collectStageDataKernelMathVisualization(timeCurrStageEntered, currStage);
+
     // update current stage tracker 
     currStage = currStage + 1;
 
@@ -99,6 +109,9 @@ function prevStage() {
         return;
     }
 
+    // save time spent on curr stage 
+    collectStageDataKernelMathVisualization(timeCurrStageEntered, currStage);
+    
     // update current stage tracker 
     currStage = currStage - 1;
 
@@ -114,5 +127,15 @@ function check_curr_stage_reset() {
         document.getElementById("nextButton").style.visibility = "visible";
     }
 }
+
+function next() {
+    // get html page id 
+    let pageID = document.body.getAttribute("data-page-id");
+
+    collectTimeOnLevel(startTime, pageID); // save time spent on page
+    
+    redirectToNextLevel(); // redirect to the next level 
+}
+
 
 // TODO: add prev functionality from the final stage 
