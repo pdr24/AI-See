@@ -2,7 +2,7 @@
 
 Link to Live Version: https://pdr24.github.io/AI-See/
 
-Link to Presurvey: [coming soon]
+Link to Presurvey: https://utsa.az1.qualtrics.com/jfe/form/SV_9uxuUrymQ8ECGuW
 
 Link to Postsurvey: https://utsa.az1.qualtrics.com/jfe/form/SV_0HYjcce4ZAOImvs
 
