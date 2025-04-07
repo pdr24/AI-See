@@ -123,6 +123,7 @@ function collectStageDataKernelMathVisualization(startTime, currStage) {
     localStorage.setItem('mainkey', userKey);
 }
 
+// collect data on specific kernel math puzzle 
 function collectKernelMathPuzzleData(timeSpent, inputImage, kernel, expectedAnswer, userAnswer, accuracy, isChallengeLevel) {
     // data object to store 
     const data = {
@@ -161,6 +162,7 @@ function collectKernelMathPuzzleData(timeSpent, inputImage, kernel, expectedAnsw
     localStorage.setItem('mainkey', JSON.stringify(userKey));
 }
 
+ // collect overall data for a timed challenge kernel math level play 
 function collectKernelMathChallengeData(numPlay, finalAccuracy, numPuzzles, score) {
     // data object to store 
     const data = {
@@ -196,17 +198,44 @@ function collectKernelMathChallengeData(numPlay, finalAccuracy, numPuzzles, scor
     localStorage.setItem('mainkey', JSON.stringify(userKey));
 }
 
-function collectCreateKernelData() {
+function collectCreateKernelData(timeSpent, accuracy, inputImage, exampleFeatureMap, userAnswer, expectedAnswer, userOutputFeatureMap) {
+    // data object to store 
+    const data = {
+        timeSpent : timeSpent,
+        accuracy : accuracy,
+        inputImage : inputImage,
+        exampleFeatureMap : exampleFeatureMap,
+        userOutputFeatureMap : userOutputFeatureMap,
+        expectedKernelAnswer : expectedAnswer,
+        userKernelAnswer : userAnswer
+    }
 
+    // get user key 
+    var userKey = getUserKey();
+
+    // Retrieve existing data for this user
+    let userData = localStorage.getItem(userKey);
+    if (userData) {
+        userData = JSON.parse(userData);
+    } else {
+        userData = {};
+    }
+
+    // Initialize puzzles array if it doesn't exist in userData 
+    if (!userData.create_kernel_puzzles) {
+        userData.create_kernel_puzzles = [];
+    }
+
+    // push puzzle data to userData puzzles array  
+    userData.create_kernel_puzzles.push(data);
+
+    // Save updated data back to local storage
+    localStorage.setItem(userKey, JSON.stringify(userData));
+
+    // new addition
+    localStorage.setItem('mainkey', JSON.stringify(userKey));
 }
 
-function collectUserLoginData() {
-    
-}
-
-function saveToLocalStorage() {
-
-}
 
 function downloadFromLocalStorage() {
 

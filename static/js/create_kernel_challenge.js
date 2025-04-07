@@ -165,6 +165,10 @@ function testAccuracy() {
     }
 
     let accuracy = (correctCellCount / 9.0) * 100;
+    let timeSpent = Math.floor(Date.now() / 1000) - startTime;
+
+    // collect data 
+    collectCreateKernelData(timeSpent, accuracy, inputImage, correctFeatureMap, userKernel, currentPuzzle.answer_kernel, userOutputFeatureMap);
 
     // show accuracy div 
     let container = document.getElementById("leftContainer");
