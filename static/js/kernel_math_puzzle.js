@@ -5,7 +5,7 @@ let startTime = null;
 // load and display a puzzle when the html page loads
 document.addEventListener("DOMContentLoaded", function () {
     startTime = Math.floor(Date.now() / 1000); // save start time 
-    
+
     fetch("static/kernel_math_puzzles.json")
         .then(response => response.json())
         .then(data => {
@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             chooseRandomPuzzle();
             displayPuzzle(); 
+            createSlidingKernelOverlay();
+
         })
         .catch(error => {
             console.error("Error loading puzzles:", error);
@@ -43,7 +45,7 @@ function displayPuzzle() {
     puzzleTextElement.innerHTML = `
         <p>Calculate the feature map the computer would get when applying this kernel on this input image:</p>
         <div style="display: flex; gap: 5%; align-items: flex-start; margin: 5%">
-            <div>
+            <div class="input-wrapper" style="position: relative; display: inline-block;">
                 <strong>Input Image:</strong><br>
                 ${inputImageHTML}
             </div>
@@ -214,4 +216,70 @@ function applyKernel(kernel, inputImage) {
 
     console.table(output); // debugging purposes 
     return output;
+}
+
+// sliding kernel 
+function createSlidingKernelOverlay() {
+    const wrapper = document.querySelector(".input-wrapper");
+    if (!wrapper) return;
+
+    const overlay = document.createElement("div");
+    overlay.id = "slidingKernel";
+    overlay.style.position = "absolute";
+
+    overlay.style.width = "55%";  
+    overlay.style.height = "51%";
+
+    overlay.style.backgroundColor = "rgba(0, 175, 241, 0.3)";
+    overlay.style.border = "2px dashed #00aff1";
+    overlay.style.cursor = "grab";
+    overlay.style.zIndex = "10";
+    overlay.draggable = false; // don't let browser drag it
+    wrapper.appendChild(overlay);
+
+    makeOverlayDraggable(overlay, wrapper);
+}
+
+function makeOverlayDraggable(overlay, wrapper) {
+    const cellSize = 25; 
+    const maxRow = 4; 
+    const maxCol = 3;
+
+    let offsetX, offsetY;
+    let isDragging = false;
+
+    overlay.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        offsetX = e.offsetX;
+        offsetY = e.offsetY;
+        overlay.style.cursor = "grabbing";
+    });
+
+    document.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+
+        const wrapperRect = wrapper.getBoundingClientRect();
+        let x = e.clientX - wrapperRect.left - offsetX;
+        let y = e.clientY - wrapperRect.top - offsetY;
+
+        // Snap to nearest cell 
+        x = Math.round(x / cellSize) * cellSize;
+        y = Math.round(y / cellSize) * cellSize;
+
+        // Clamp within bounds (max top-left corner is at cell 4,4)
+        x = Math.min(x, maxCol * cellSize);
+        y = Math.min(y, maxRow * cellSize);
+        x = Math.max(x, 0);
+        y = Math.max(y, 0);
+
+        overlay.style.left = x + "px";
+        overlay.style.top = y + "px";
+    });
+
+    document.addEventListener("mouseup", () => {
+        if (isDragging) {
+            isDragging = false;
+            overlay.style.cursor = "grab";
+        }
+    });
 }

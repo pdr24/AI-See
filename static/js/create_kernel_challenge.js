@@ -174,7 +174,7 @@ function testAccuracy() {
     let container = document.getElementById("leftContainer");
     container.innerHTML = `
         <div class="accuracy-display-container" ">    
-            <p class="accuracy-display-text">Accuracy: ${accuracy}% <br><br>You've reached the end. Play this level again or log out below</p>
+            <p class="accuracy-display-text">Accuracy: ${accuracy.toFixed(2)}% <br><br>You've reached the end. Play this level again or log out below</p>
             
             <div class="buttonRow">
                 <button class="playAgainButton" onclick="playAgain()">Play Again</button>

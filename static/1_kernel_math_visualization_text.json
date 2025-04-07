@@ -3,23 +3,23 @@
 
     { "stage": 2, "text": "The computer will apply the kernel on the input image and create a feature map. The feature map will have information on the pattern the computer found in the input image using the kernel. " },
 
-    { "stage": 3, "text": "To create the feature map, we have to slide the kernel over the input image like this. " },
+    { "stage": 3, "text": "To create the feature map, we have to slide the kernel over the input image like this. (Keep clicking through and watch how it slides on the right.) " },
 
-    { "stage": 4, "text": "To create the feature map, we have to slide the kernel over the input image like this. " },
+    { "stage": 4, "text": "To create the feature map, we have to slide the kernel over the input image like this. (Keep clicking through and watch how it slides on the right.) " },
 
-    { "stage": 5, "text": "To create the feature map, we have to slide the kernel over the input image like this. " },
+    { "stage": 5, "text": "To create the feature map, we have to slide the kernel over the input image like this. (Keep clicking through and watch how it slides on the right.) " },
 
-    { "stage": 6, "text": "To create the feature map, we have to slide the kernel over the input image like this. " },
+    { "stage": 6, "text": "To create the feature map, we have to slide the kernel over the input image like this. (Keep clicking through and watch how it slides on the right.) " },
 
-    { "stage": 7, "text": "To create the feature map, we have to slide the kernel over the input image like this. " },
+    { "stage": 7, "text": "To create the feature map, we have to slide the kernel over the input image like this. (Keep clicking through and watch how it slides on the right.) " },
 
-    { "stage": 8, "text": "To create the feature map, we have to slide the kernel over the input image like this. " },
+    { "stage": 8, "text": "To create the feature map, we have to slide the kernel over the input image like this. (Keep clicking through and watch how it slides on the right.) " },
 
-    { "stage": 9, "text": "To create the feature map, we have to slide the kernel over the input image like this. " },
+    { "stage": 9, "text": "To create the feature map, we have to slide the kernel over the input image like this. (Keep clicking through and watch how it slides on the right.) " },
 
-    { "stage": 10, "text": "To create the feature map, we have to slide the kernel over the input image like this. " },
+    { "stage": 10, "text": "To create the feature map, we have to slide the kernel over the input image like this. (Keep clicking through and watch how it slides on the right.) " },
 
-    { "stage": 11, "text": "To create the feature map, we have to slide the kernel over the input image like this. " },
+    { "stage": 11, "text": "To create the feature map, we have to slide the kernel over the input image like this. (Keep clicking through and watch how it slides on the right.) " },
 
     { "stage": 12, "text": "At each stage, the computer does some math with the input image and the kernel to fill out one box in the feature map. The kernel is on top of a 3x3 portion of the input image. We have to multiply each box in the highlighted portion of the input image with the corresponding box in the kernel. Then, we have to add all of those products together. <br><br>For example: <br><br>(0 x 1) + (0 x 0) + (1 x 1) + <br>(0 x 1) + (1 x 0) + (1 x 1) +       =       3 <br>(0 x 1) + (0 x 0) + (1 x 1) <br>" },
 

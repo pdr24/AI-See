@@ -1,4 +1,4 @@
-const challengeLevelLength = 5; // 60 for now 
+const challengeLevelLength = 60; // 60 for now 
 let puzzles = []; // for storing all the puzzles
 let currentPuzzle = null; // stores the current puzzle that has been selected
 let startTime = null; 
@@ -305,7 +305,7 @@ function showNextPuzzle() {
             if (!inputElement) continue;
 
             if (inputElement.tagName === "INPUT" && inputElement.value.trim() === "") {
-                alert("Please completely fill in the feature map on the right before testing your accuracy.");
+                showNonBlockingAlert("Please completely fill in the feature map on the right before testing your accuracy");
                 return; // Stop execution if any input is blank
             }
         }
@@ -364,8 +364,8 @@ function showTimeUpModal() {
     container.innerHTML = `
         <div class="accuracy-display-container" style="height: 35vh;">  
             <div>  
-                <p class="accuracy-display-text">Accuracy: ${accuracy}% <br><br> Number of Puzzles Completed: ${numPuzzlesCompleted}</p>
-                <p class="accuracy-display-text"><b>Final Score: ${finalScore}</b></p>
+                <p class="accuracy-display-text">Accuracy: ${accuracy.toFixed(2)}% <br><br> Number of Puzzles Completed: ${numPuzzlesCompleted}</p>
+                <p class="accuracy-display-text"><b>Final Score: ${finalScore.toFixed(2)}</b></p>
 
                 <div class="buttonRow">
                     <button class="playAgainButton" onclick="playAgainTimedChallenge()">Play Again</button>
@@ -383,3 +383,41 @@ function showTimeUpModal() {
     let testAccuracyButton = document.getElementById("testAccuracyButton");
     testAccuracyButton.style.visibility = "hidden";
 }
+
+function showNonBlockingAlert(message) {
+    let existing = document.getElementById("customToast");
+    if (existing) existing.remove(); // remove if already shown
+
+    const toast = document.createElement("div");
+    toast.id = "customToast";
+    toast.innerText = message;
+    toast.style.position = "fixed";
+    toast.style.top = "7%";
+    toast.style.left = "50%";
+    toast.style.width = "60%";
+    toast.style.height = "10%";
+    toast.style.alignContent = "center";
+    toast.style.alignItems = "center";
+    toast.style.padding = "auto";
+
+    toast.style.transform = "translateX(-50%)";
+    toast.style.padding = "15px 25px";
+    toast.style.backgroundColor = "#333";
+    toast.style.color = "#fff";
+    toast.style.fontFamily = "Monaco";
+    toast.style.borderRadius = "10px";
+    toast.style.boxShadow = "0 0 10px rgba(0,0,0,0.3)";
+    toast.style.zIndex = 9999;
+    toast.style.opacity = 0;
+    toast.style.transition = "opacity 0.3s";
+
+    document.body.appendChild(toast);
+    setTimeout(() => toast.style.opacity = 1, 50); // fade in
+
+    // Fade out after 3 seconds
+    setTimeout(() => {
+        toast.style.opacity = 0;
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+}
+

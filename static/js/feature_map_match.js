@@ -160,7 +160,7 @@ function drawPuzzle(selected) {
         let leftContainer = document.getElementById("leftContainer");
         leftContainer.innerHTML = `
             <div class="accuracy-display-container">    
-                <p class="accuracy-display-text">Accuracy: ${accuracy}% <br><br>${correctCount} / ${totalMatches} correct matches!</p>
+                <p class="accuracy-display-text">Accuracy: ${accuracy.toFixed(2)}% <br><br>${correctCount} / ${totalMatches} correct matches!</p>
                 
                 <div class="buttonRow">
                     <button class="playAgainButton" onclick="playAgain()">Play Again</button>
@@ -170,6 +170,7 @@ function drawPuzzle(selected) {
         `;
 
         document.getElementById("testAccuracyButton").style.visibility = "hidden";
+        document.getElementById("resetButton").style.visibility = "hidden";
     });
 
     // CANVAS LOGIC
