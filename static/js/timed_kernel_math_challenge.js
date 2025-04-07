@@ -1,6 +1,8 @@
 const challengeLevelLength = 60; // 60 for now 
 let puzzles = []; // for storing all the puzzles
 let currentPuzzle = null; // stores the current puzzle that has been selected
+let startTime = null; 
+let currPuzzleStartTime = null;
 
 // for data collection 
 let numCorrectAnswers = 0;
@@ -14,6 +16,13 @@ let i2 = null;
 let j2 = null;
 
 document.addEventListener("DOMContentLoaded", function () {
+    startTime = Math.floor(Date.now() / 1000); // save start time 
+
+    // Get the current value (or default to 0 if not set) and increment 
+    let currPlayNumber = parseInt(localStorage.getItem('challenge_level_number')) || 0;
+    currPlayNumber += 1;// Increment it
+    localStorage.setItem('challenge_level_number', currPlayNumber); // Store the updated value back in localStorage
+
     // load puzzles
     fetch("static/timed_kernel_math_challenge.json")
         .then(response => response.json())
@@ -65,6 +74,8 @@ function chooseRandomPuzzle() {
 
 // display the puzzle 
 function displayPuzzle() {
+    currPuzzleStartTime = Math.floor(Date.now() / 1000); // save start time of current puzzle 
+
     const puzzleTextElement = document.getElementById("puzzleText");
 
     const inputImageHTML = matrixToHTML(currentPuzzle.input_image, true);
@@ -282,7 +293,11 @@ function testSingleCellAccuracy(i, j) {
     numAnswers = numAnswers + 1;
     if (userAnswer === featureMap[i][j]) {
         numCorrectAnswers = numCorrectAnswers + 1;
+        return 1; // indicates correct answer
     }        
+    else {
+        return 0; // indicates incorrect answer 
+    }
 
 }
 
@@ -308,10 +323,34 @@ function showNextPuzzle() {
 }
 
 function testAccuracy() {
-    testSingleCellAccuracy(i1, j1);
-    testSingleCellAccuracy(i2, j2);
+
+    let currPuzzleTimeSpent = Math.floor(Date.now() / 1000) - currPuzzleStartTime;
+
+    let accuracy1 = testSingleCellAccuracy(i1, j1);
+    let accuracy2 = testSingleCellAccuracy(i2, j2);
+    let tempAccuracy = 1.0 * (accuracy1 + accuracy2) / 2.0 * 100;
+
+    let correctMap = applyKernel(currentPuzzle.kernel, currentPuzzle.input_image);
+    let currChallengeLevelCounter = parseInt(localStorage.getItem('challenge_level_number'));
+
+    // get user inputs for the two cells they are filling out 
+    let userAnswer = [[-1, -1, -1], [-1, -1, -1], [-1, -1, -1]];
+    userAnswer[i1][j1] = getOneCellUserEntry(i1, j1);
+    userAnswer[i2][j2] = getOneCellUserEntry(i2, j2);
+
+    collectKernelMathPuzzleData(currPuzzleTimeSpent, currentPuzzle.input_image, currentPuzzle.kernel, correctMap, userAnswer, tempAccuracy, currChallengeLevelCounter);
 
     numPuzzlesCompleted = numPuzzlesCompleted + 1;
+}
+
+function getOneCellUserEntry(i, j) {
+    // get the user's input 
+    let cellId = `cell-${i}-${j}`;
+    let input = document.getElementById(cellId);
+    let userAnswer = parseInt(input.value); 
+
+    // return user's input 
+    return userAnswer;
 }
 
 function showTimeUpModal() {
