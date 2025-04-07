@@ -1,9 +1,11 @@
 let puzzles = []; // for storing all the puzzles
 let currentPuzzle = null; // stores the current puzzle that has been selected
+let startTime = null; 
 
 // load and display a puzzle when the html page loads
 document.addEventListener("DOMContentLoaded", function () {
-
+    startTime = Math.floor(Date.now() / 1000); // save start time 
+    
     fetch("static/kernel_math_puzzles.json")
         .then(response => response.json())
         .then(data => {
@@ -147,6 +149,7 @@ function testAccuracy() {
     const correctMap = applyKernel(currentPuzzle.kernel, currentPuzzle.input_image);
     let total = 9; // number of input boxes user must fill out is hard coded at 9 for now 
     let correct = 0;
+    let userMap = [[-1, -1, -1], [-1, -1, -1], [-1, -1, -1]];
 
     // count number of correct entries 
     for (let i = 0; i < 3; i++) {
@@ -156,6 +159,8 @@ function testAccuracy() {
             if (!inputElement) continue;
 
             const userValue = parseInt(inputElement.value);
+            userMap[i][j] = userValue;
+
             const correctValue = correctMap[i][j];
 
             if (!isNaN(userValue) && (userValue === correctValue)) {
@@ -165,6 +170,10 @@ function testAccuracy() {
     }
 
     const accuracy = Math.round((correct / total) * 100); // calculate accuracy 
+
+    // save puzzle data 
+    let timeSpent = Math.floor(Date.now() / 1000) - startTime;
+    collectKernelMathPuzzleData(timeSpent, currentPuzzle.input_image, currentPuzzle.kernel, correctMap, userMap, accuracy, false);
 
     // show accuracy div 
     let leftContainer = document.getElementById("leftContainer");

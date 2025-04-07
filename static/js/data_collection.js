@@ -1,5 +1,3 @@
-// TODO: implement data collection here 
-
 // get user key for the current user based on user info 
 function getUserKey() {
     let userInfo = JSON.parse(localStorage.getItem('userinfo'));
@@ -93,6 +91,7 @@ function collectFeatureMapMatchData(accuracy, timeSpent, isVerticalCorrect, isHo
 
 }
 
+// collect time spent on a specific stage of the kernel math intro page 
 function collectStageDataKernelMathVisualization(startTime, currStage) {
     // Calculate time spent on the current stage 
     const timeSpent = Math.floor(Date.now() / 1000) - startTime;
@@ -124,8 +123,42 @@ function collectStageDataKernelMathVisualization(startTime, currStage) {
     localStorage.setItem('mainkey', userKey);
 }
 
-function collectKernelMathData() {
+function collectKernelMathPuzzleData(timeSpent, inputImage, kernel, expectedAnswer, userAnswer, accuracy, isChallengeLevel) {
+    // data object to store 
+    const data = {
+        timeSpent : timeSpent,
+        isChallengeLevel : isChallengeLevel,
+        accuracy : accuracy,
+        inputImage : inputImage,
+        kernel: kernel,
+        expectedAnswer : expectedAnswer,
+        userAnswer : userAnswer
+    }
 
+    // get user key 
+    var userKey = getUserKey();
+
+    // Retrieve existing data for this user
+    let userData = localStorage.getItem(userKey);
+    if (userData) {
+        userData = JSON.parse(userData);
+    } else {
+        userData = {};
+    }
+
+    // Initialize puzzles array if it doesn't exist in userData 
+    if (!userData.kernel_math_puzzles) {
+        userData.kernel_math_puzzles = [];
+    }
+
+    // push puzzle data to userData puzzles array  
+    userData.kernel_math_puzzles.push(data);
+
+    // Save updated data back to local storage
+    localStorage.setItem(userKey, JSON.stringify(userData));
+
+    // new addition
+    localStorage.setItem('mainkey', JSON.stringify(userKey));
 }
 
 function collectKernelMathChallengeData() {
@@ -147,5 +180,3 @@ function saveToLocalStorage() {
 function downloadFromLocalStorage() {
 
 }
-
-// TODO: think about how all the data will be stored/organized in a json file for each user 
