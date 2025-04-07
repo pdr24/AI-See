@@ -18,13 +18,17 @@
             // Save data to computer 
             saveUserDataToComputer();
     
-            // Redirect back to login page 
-            window.location.href = "index.html";
+            // Delay redirect slightly to let link open first
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 500); // delay in milliseconds
         }
 
         window.saveData = function() {
             // save data to computer 
             saveUserDataToComputer();
+
+            logout();
         }
     </script>
 
@@ -35,7 +39,7 @@
     <p style="text-align: center; margin-top: 5vh; margin-bottom: 7vh;">
         <a href="https://utsa.az1.qualtrics.com/jfe/form/SV_0HYjcce4ZAOImvs" 
            target="_blank" 
-           onclick="saveData()" 
+           onclick="logout()" 
            style="color: blue; text-decoration: underline; font-family: Monaco; font-size: 8vh;">
             Click here to take the post-survey! 
         </a>

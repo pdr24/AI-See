@@ -237,11 +237,8 @@ function collectCreateKernelData(timeSpent, accuracy, inputImage, exampleFeature
 // save user data to computer and clear local storage 
 function saveUserDataToComputer() {
 
-    let logoutTime = Math.floor(Date.now() / 1000) // current time in seconds (time since 1970)
-    localStorage.setItem('userinfo', JSON.stringify(user_identifying_info));
-
-    // set logout time
-    localStorage.setItem('logout_time', logoutTime);
+    let logoutTime = Math.floor(Date.now() / 1000) // current time in seconds (time since 1970)  
+    localStorage.setItem('logout_time', logoutTime); // set logout time
 
     console.log("entered saveUserDataToComputer()"); 
 
