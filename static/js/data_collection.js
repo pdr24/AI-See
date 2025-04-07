@@ -22,9 +22,6 @@ function addUser(firstName, lastInitial, gradeLevel) {
     }
 
     localStorage.setItem('userinfo', JSON.stringify(user_identifying_info));
-
-    // set timed challenge level number to 1 for later use 
-    localStorage.setItem('timed_challenge_level_number', 1);
 }
 
 function collectTimeOnLevel(startTime, pageID) {
@@ -237,6 +234,51 @@ function collectCreateKernelData(timeSpent, accuracy, inputImage, exampleFeature
 }
 
 
-function downloadFromLocalStorage() {
+// save user data to computer and clear local storage 
+function saveUserDataToComputer() {
 
+    let logoutTime = Math.floor(Date.now() / 1000) // current time in seconds (time since 1970)
+    localStorage.setItem('userinfo', JSON.stringify(user_identifying_info));
+
+    // set logout time
+    localStorage.setItem('logout_time', logoutTime);
+
+    console.log("entered saveUserDataToComputer()"); 
+
+    let allUserData = {};
+
+    // Generate the timestamp
+    let date = new Date();
+    let timestamp = `${date.getFullYear() % 100}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}_${date.getHours().toString().padStart(2, '0')}-${date.getMinutes().toString().padStart(2, '0')}-${date.getSeconds().toString().padStart(2, '0')}`;
+    
+    if (localStorage.length > 0) {
+        // Use the last key in local storage for the filename
+        let lastKey = localStorage.key(localStorage.length - 1);
+        let mainKey = JSON.parse(localStorage.getItem('mainkey'));
+
+        for (let i = 0; i < localStorage.length; i++) {
+            let key = localStorage.key(i);
+            let value = localStorage.getItem(key);
+            try {
+                allUserData[key] = JSON.parse(value);
+            } catch (e) {
+                console.warn(`Skipping key ${key} due to invalid JSON: ${value}`);
+            }
+        }
+    
+        let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(allUserData, null, 2));
+        let downloadAnchorNode = document.createElement('a');
+        let filename = `${mainKey}_${timestamp}.json`;
+        downloadAnchorNode.setAttribute("href", dataStr);
+        downloadAnchorNode.setAttribute("download", filename);
+        document.body.appendChild(downloadAnchorNode); // Required for Firefox
+        downloadAnchorNode.click();
+        downloadAnchorNode.remove();
+    
+        // Clear local storage
+        localStorage.clear();
+    } else {
+        console.warn('No data in local storage to download.');
+    }
+    
 }

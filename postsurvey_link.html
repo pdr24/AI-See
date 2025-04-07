@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+
+</head>
+
+<body data-page-id="postsurvey">
+
+    <script src="static/js/data_collection.js"></script>
+    <script>
+    
+        window.logout = function() {
+            // Save data to computer 
+            saveUserDataToComputer();
+    
+            // Redirect back to login page 
+            window.location.href = "index.html";
+        }
+
+        window.saveData = function() {
+            // save data to computer 
+            saveUserDataToComputer();
+        }
+    </script>
+
+    <img class="background-layer" src="static/assets/2striped_background.png" alt="Background Image" />
+
+    <h2>AI-See --- Link to Post-Survey</h2>
+
+    <h2>AI-See --- Link to Post-Survey</h2>
+
+
+    <button class="nextButton" onclick="logout()">Log Out</button>
+
+    
+
+</body>
