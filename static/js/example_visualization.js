@@ -29,10 +29,10 @@ const nodes = [
 // Rectangle nodes (kernels, middle column)
 const rectNodes = [
     // kernels
-    { x: 0.50, y: 0.15, width: 350, height: 70, text: "Vertical Edge Kernel" },
-    { x: 0.50, y: 0.38, width: 350, height: 70, text: "Horizontal Edge Kernel" },
-    { x: 0.50, y: 0.61, width: 350, height: 70, text: "Upward Diagonal Kernel" },
-    { x: 0.50, y: 0.84, width: 350, height: 70, text: "Downward Diagonal Kernel" }
+    { x: 0.50, y: 0.15, width: 350, height: 70, text: "Vertical Edge Kernel |" },
+    { x: 0.50, y: 0.38, width: 350, height: 70, text: "Horizontal Edge Kernel --" },
+    { x: 0.50, y: 0.61, width: 350, height: 70, text: "Upward Diagonal Kernel /" },
+    { x: 0.50, y: 0.84, width: 350, height: 70, text: "Downward Diagonal Kernel \\" }
 ];
 
 // Connect original image → Kernels & Kernels → Feature maps (aligned)
