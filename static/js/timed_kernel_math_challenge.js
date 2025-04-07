@@ -1,4 +1,4 @@
-const challengeLevelLength = 60; // 60 for now 
+const challengeLevelLength = 5; // 60 for now 
 let puzzles = []; // for storing all the puzzles
 let currentPuzzle = null; // stores the current puzzle that has been selected
 let startTime = null; 
@@ -17,11 +17,6 @@ let j2 = null;
 
 document.addEventListener("DOMContentLoaded", function () {
     startTime = Math.floor(Date.now() / 1000); // save start time 
-
-    // Get the current value (or default to 0 if not set) and increment 
-    let currPlayNumber = parseInt(localStorage.getItem('challenge_level_number')) || 0;
-    currPlayNumber += 1;// Increment it
-    localStorage.setItem('challenge_level_number', currPlayNumber); // Store the updated value back in localStorage
 
     // load puzzles
     fetch("static/timed_kernel_math_challenge.json")
@@ -373,12 +368,16 @@ function showTimeUpModal() {
                 <p class="accuracy-display-text"><b>Final Score: ${finalScore}</b></p>
 
                 <div class="buttonRow">
-                    <button class="playAgainButton" onclick="playAgain()">Play Again</button>
+                    <button class="playAgainButton" onclick="playAgainTimedChallenge()">Play Again</button>
                     <button class="nextButton" onclick="redirectToNextLevel()">Next</button>
                 </div>
             <div>
         </div>
     `;
+
+    // save final challenge level metrics 
+    let currChallengeLevelCounter = parseInt(localStorage.getItem('challenge_level_number'));
+    collectKernelMathChallengeData(currChallengeLevelCounter, accuracy, numPuzzlesCompleted, finalScore);
 
     // remove test accuracy button 
     let testAccuracyButton = document.getElementById("testAccuracyButton");

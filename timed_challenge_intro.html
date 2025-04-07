@@ -22,4 +22,11 @@
 
     <script src="static/js/redirect.js"></script>
 
+    <script>
+        // Get the current value (or default to 0 if not set) and increment 
+        let currPlayNumber = parseInt(localStorage.getItem('challenge_level_number')) || 0;
+        currPlayNumber += 1;// Increment it
+        localStorage.setItem('challenge_level_number', currPlayNumber); // Store the updated value back in localStorage
+    </script>
+
 </body>

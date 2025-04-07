@@ -161,8 +161,39 @@ function collectKernelMathPuzzleData(timeSpent, inputImage, kernel, expectedAnsw
     localStorage.setItem('mainkey', JSON.stringify(userKey));
 }
 
-function collectKernelMathChallengeData() {
+function collectKernelMathChallengeData(numPlay, finalAccuracy, numPuzzles, score) {
+    // data object to store 
+    const data = {
+        numPlay : numPlay,
+        finalOverallAccuracy : finalAccuracy,
+        numPuzzles : numPuzzles,
+        score : score
+    }
 
+    // get user key 
+    var userKey = getUserKey();
+
+    // Retrieve existing data for this user
+    let userData = localStorage.getItem(userKey);
+    if (userData) {
+        userData = JSON.parse(userData);
+    } else {
+        userData = {};
+    }
+
+    // Initialize puzzles array if it doesn't exist in userData 
+    if (!userData.timed_kernel_math_challenge_overall) {
+        userData.timed_kernel_math_challenge_overall = [];
+    }
+
+    // push puzzle data to userData puzzles array  
+    userData.timed_kernel_math_challenge_overall.push(data);
+
+    // Save updated data back to local storage
+    localStorage.setItem(userKey, JSON.stringify(userData));
+
+    // new addition
+    localStorage.setItem('mainkey', JSON.stringify(userKey));
 }
 
 function collectCreateKernelData() {
