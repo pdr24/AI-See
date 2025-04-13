@@ -14,6 +14,8 @@
 
     <h2>AI-See --- Timed Kernel Math Challenge Level </h2>
 
+    <button class="topRightButton" onclick="masterLogout()"></button>
+
     <div class="timeLevelInstructionContainer">
         <p>In this level, you will have 60 seconds to solve some incomplete kernel math puzzles. Aim for both a high accuracy and to complete many puzzles! Press start to enter the timed level!</p>
     </div>
@@ -21,6 +23,8 @@
     <button class="nextButton" id="nextButton" onclick="redirectToNextLevel()">Start</button>
 
     <script src="static/js/redirect.js"></script>
+    <script src="static/js/data_collection.js"></script>
+
 
     <script>
         // Get the current value (or default to 0 if not set) and increment 
@@ -29,4 +33,23 @@
         localStorage.setItem('challenge_level_number', currPlayNumber); // Store the updated value back in localStorage
     </script>
 
+    <script>
+        
+        window.logout = function() {
+            // Save data to computer 
+            saveUserDataToComputer();
+
+            // Delay redirect slightly to let link open first
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 500); // delay in milliseconds
+        }
+
+        window.saveData = function() {
+            // save data to computer 
+            saveUserDataToComputer();
+
+            logout();
+        }
+    </script>
 </body>

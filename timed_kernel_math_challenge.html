@@ -27,6 +27,8 @@
 
     <h2>AI-See --- Timed Kernel Math Challenge</h2>
 
+    <button class="topRightButton" onclick="masterLogout()"></button>
+
     <div class="container" id="container">
         <div class="left50">
             <p id="puzzleText">Calculate the missing values in the feature map based on the provided input image and kernel!</p>
@@ -66,4 +68,23 @@
     <script src="static/js/redirect.js"></script>
     <script src="static/js/data_collection.js"></script>
 
+    <script>
+    
+      window.logout = function() {
+          // Save data to computer 
+          saveUserDataToComputer();
+  
+          // Delay redirect slightly to let link open first
+          setTimeout(() => {
+              window.location.href = "index.html";
+          }, 500); // delay in milliseconds
+      }
+
+      window.saveData = function() {
+          // save data to computer 
+          saveUserDataToComputer();
+
+          logout();
+      }
+  </script>
 </body>

@@ -27,6 +27,8 @@
 
     <h2>AI-See --- Kernel Math Introduction</h2>
 
+    <button class="topRightButton" onclick="masterLogout()"></button>
+
     <div class="container" style="height: 65%;">
         <div class="left50">
             <p></p>
@@ -53,4 +55,23 @@
     <script src="static/js/redirect.js"></script>
     <script src="static/js/data_collection.js"></script>
 
+    <script>
+    
+        window.logout = function() {
+            // Save data to computer 
+            saveUserDataToComputer();
+    
+            // Delay redirect slightly to let link open first
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 500); // delay in milliseconds
+        }
+
+        window.saveData = function() {
+            // save data to computer 
+            saveUserDataToComputer();
+
+            logout();
+        }
+    </script>
 </body>

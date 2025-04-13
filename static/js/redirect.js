@@ -48,5 +48,3 @@ function playAgain() {
 function playAgainTimedChallenge() {
     window.location.href = "timed_challenge_intro.html";
 }
-
-//TODO: improve logout functionality from the very last page or something like that (a temporary version is in the timed challenge level js file)
