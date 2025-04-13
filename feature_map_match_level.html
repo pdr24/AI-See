@@ -27,6 +27,8 @@
 
     <h2>AI-See --- Feature Map Make-A-Match </h2>
 
+    <button class="topRightButton" onclick="masterLogout()"></button>
+    
     <div class="containerMakeAMatch">
         <div class="leftMakeAMatch" id="leftContainer">
             <p>Match each feature map with the kernel it was created by! If you need to change your answers, use the 'Reset' button!</p>
@@ -64,4 +66,23 @@
     <script src="static/js/redirect.js"></script>
     <script src="static/js/data_collection.js"></script>
 
+    <script>
+    
+        window.logout = function() {
+            // Save data to computer 
+            saveUserDataToComputer();
+    
+            // Delay redirect slightly to let link open first
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 500); // delay in milliseconds
+        }
+
+        window.saveData = function() {
+            // save data to computer 
+            saveUserDataToComputer();
+
+            logout();
+        }
+    </script>
 </body>

@@ -27,7 +27,7 @@
 
     <h2>AI-See --- Introduction to CNNs</h2>
 
-    <button class="topRightButton" onclick="handleTopRightButtonClick()"></button>
+    <button class="topRightButton" onclick="masterLogout()"></button>
 
     <div class="container">
         <div class="left">
@@ -47,4 +47,23 @@
     <script src="static/js/introduction_pages.js"></script>
     <script src="static/js/data_collection.js"></script>
 
+    <script>
+    
+        window.logout = function() {
+            // Save data to computer 
+            saveUserDataToComputer();
+    
+            // Delay redirect slightly to let link open first
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 500); // delay in milliseconds
+        }
+
+        window.saveData = function() {
+            // save data to computer 
+            saveUserDataToComputer();
+
+            logout();
+        }
+    </script>
 </body>
