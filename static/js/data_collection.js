@@ -283,7 +283,7 @@ function saveUserDataToComputer() {
 function masterLogout() {
     const password = prompt("Enter the master password to log out:");
 
-    if (password === "master") {
+    if (password === "ecg123") {
         logMasterLogout();
         logout();
     } else {
