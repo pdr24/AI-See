@@ -279,3 +279,36 @@ function saveUserDataToComputer() {
     }
     
 }
+
+function masterLogout() {
+    const password = prompt("Enter the master password to log out:");
+
+    if (password === "master") {
+        logMasterLogout();
+        logout();
+    } else {
+        alert("Please keep playing the game");
+    }
+}
+
+function logMasterLogout() {
+    // get user key 
+    var userKey = getUserKey();
+
+    // Retrieve existing data for this user
+    let userData = localStorage.getItem(userKey);
+    if (userData) {
+        userData = JSON.parse(userData);
+    } else {
+        userData = {};
+    }
+
+    // log that master logout was detected 
+    userData.masterLogout = true;
+
+    // Save updated data back to local storage
+    localStorage.setItem(userKey, JSON.stringify(userData));
+
+    // new addition
+    localStorage.setItem('mainkey', JSON.stringify(userKey));
+}

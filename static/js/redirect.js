@@ -48,13 +48,3 @@ function playAgain() {
 function playAgainTimedChallenge() {
     window.location.href = "timed_challenge_intro.html";
 }
-
-function masterLogout() {
-    const password = prompt("Enter the master password to log out:");
-
-    if (password === "master") {
-        logout();
-    } else {
-        alert("Please keep playing the game");
-    }
-}
