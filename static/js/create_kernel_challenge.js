@@ -178,7 +178,7 @@ function testAccuracy() {
             
             <div class="buttonRow">
                 <button class="playAgainButton" onclick="playAgain()">Play Again</button>
-                <button class="nextButton" onclick="redirectToNextLevel()">Visit Post-Survey</button>
+                <button class="nextButton" onclick="redirectToNextLevel()">Log Out</button>
             </div>
         </div>
     `;
